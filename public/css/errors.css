@@ -1,0 +1,17 @@
+.errors {
+  background-color: rgba(12, 84, 96, 0.6);
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  border-radius: 2px;
+  color: white;
+  display: none; }
+
+.active {
+  display: block; }
+
+.left-side {
+  margin-right: 1px; }
+
+/*# sourceMappingURL=errors.css.map */

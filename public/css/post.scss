@@ -1,0 +1,301 @@
+$secondary-color: #f38f1b;
+$primary-color: #055e60;
+
+
+.user-posts{
+  .single-post{
+
+    position: relative;
+    padding: 10px;
+    width: 100%;
+    border-radius: 3px;
+
+    background-color: #F3E9E1;
+    .header{
+      margin-bottom: 10px;
+      align-items: center;
+      .profile-img{
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        border-radius: 50%;
+        img{
+         height: 50px;
+          width: 50px;
+          object-fit: cover;
+        }
+
+      }
+      h3{
+        font-weight: 600;
+        font-size: 1.3rem;
+        margin-bottom: 0px !important;
+      }
+    }
+    .post-image{
+      width: 100%;
+      overflow: hidden;
+      max-height: 100rem;
+    }
+  }
+
+  .post-action{
+    button{
+      background-color: $secondary-color !important;
+      color: white !important;
+      border-radius: 0px;
+      border: 0px;
+      transition: 200ms;
+      padding: 0.675rem 1rem;
+      &:hover{
+        background-color: transparent !important;
+        color: $secondary-color !important;
+      }
+
+      &:focus{
+        background-color: transparent !important;
+        transform: scale(1.1);
+        box-shadow: none !important;
+        color: $secondary-color !important;
+      }
+
+
+
+
+    }
+  }
+
+
+  .post-content{
+    text-align: center;
+    article{
+      &:before{
+        text-align: left;
+        content: open-quote;
+        font-size: 300%;
+        font-weight: 900;
+        opacity: 0.3;
+        line-height: 0.1rem;
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+      &:after{
+        content: close-quote;
+        opacity: 0.3;
+        font-size: 300%;
+        font-weight: 900;
+        line-height: 0.1rem;
+        vertical-align: -2rem;
+        margin-left: 10px;
+      }
+    }
+
+  }
+
+  .comment-block, .rate-block{
+    display: none;
+    textarea{
+      width: 100%;
+      background-color: transparent;
+    }
+    button{
+      padding: 0.6rem 3rem;
+    }
+  }
+}
+
+.tags{
+  padding: 0.3em;
+  border-radius: 2px;
+  color: white;
+  background-color: $primary-color;
+}
+
+.post-settings{
+
+  .post-settings-trigger{
+    i{
+      &:hover{
+        opacity: 0.4 ;
+      }
+    }
+  }
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  .post-settings-toogle{
+    display: none ;
+    padding: 5px;
+    background-color: white;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 87%;
+  }
+
+
+}
+
+.img-holder{
+  display: none;
+  width: 400px;
+  height: 200px;
+  position: relative;
+
+  img{
+    max-width: 100%;
+    max-height: 100%;
+  }
+  button{
+    left: 2%;
+    top: 2%;
+    position: absolute;
+    padding: 0.3rem;
+
+  }
+}
+
+.comments-section{
+  display: none;
+  .my-button{
+    color: $primary-color;
+    border-color: $primary-color !important;
+    &:hover{
+      color: white;
+    }
+  }
+  h3{
+    padding-left: 5px;
+    font-size: 1em;
+    font-weight: bold;
+  }
+  .comment-content{
+
+    padding: 5px;
+    .comment{
+      background-color: #f2e2cb;
+      &:nth-child(even){
+        background-color: transparent;
+      }
+      padding: 5px;
+      img{
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      h4{
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.6 !important;
+      }
+      p{
+        margin-bottom: 0px;
+      }
+    }
+  }
+
+}
+
+.post-button{
+  cursor: pointer;
+  transition-duration: 200ms;
+  &:hover, &:active{
+    color: $secondary-color !important;
+    opacity: 0.8;
+  }
+
+}
+
+.rate-icon{
+  font-size: 2em !important;
+  color: $secondary-color;
+  margin-bottom: 10px;
+  &:hover{
+    transform: scale(1.1);
+  }
+
+  &:hover .description{
+    display: block !important;
+
+    &:before{
+      font-size: 14px !important;
+      vertical-align: top !important;
+      position: absolute;
+      left: -20%;
+      right: -20%;
+    }
+  }
+  i{
+    color: white;
+    position: absolute;
+  }
+
+}
+
+.description{
+  display: none;
+}
+.post-rate{
+  transition: 200ms;
+  &:hover{
+    opacity: 0;
+  }
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top:0px;
+  text-align: center;
+  padding-top: 55%;
+  background-color: rgba($primary-color, 0.7);
+  .numberCircle {
+    text-align: center;
+    width: 230px;
+    height: 230px;
+    display:inline-block;
+    line-height:0px;
+
+    border-radius:50%;
+    border:10px solid $secondary-color;
+
+    font-size:32px;
+  }
+
+  .numberCircle span {
+    display:inline-block;
+    color: $secondary-color;
+    font-size: 3em;
+    font-weight: 900;
+    font-family: Muli;
+    padding-top:50%;
+    padding-bottom:50%;
+
+    margin-left:8px;
+    margin-right:8px;
+  }
+}
+.des-1{
+  &:before{
+    content:"bardzo slabo";
+  }
+}
+.des-2{
+  &:before{
+    content:"slabo";
+  }
+}
+.des-3{
+  &:before{
+    content:"srednio";
+  }
+}
+
+.des-4{
+  &:before{
+    content:"dobrze";
+  }
+}
+.des-5{
+  &:before{
+    content:"bardzo dobrze";
+  }
+}

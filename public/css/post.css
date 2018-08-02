@@ -1,0 +1,207 @@
+.user-posts .single-post {
+  position: relative;
+  padding: 10px;
+  width: 100%;
+  border-radius: 3px;
+  background-color: #F3E9E1; }
+  .user-posts .single-post .header {
+    margin-bottom: 10px;
+    align-items: center; }
+    .user-posts .single-post .header .profile-img {
+      width: 50px;
+      height: 50px;
+      overflow: hidden;
+      border-radius: 50%; }
+      .user-posts .single-post .header .profile-img img {
+        height: 50px;
+        width: 50px;
+        object-fit: cover; }
+    .user-posts .single-post .header h3 {
+      font-weight: 600;
+      font-size: 1.3rem;
+      margin-bottom: 0px !important; }
+  .user-posts .single-post .post-image {
+    width: 100%;
+    overflow: hidden;
+    max-height: 100rem; }
+.user-posts .post-action button {
+  background-color: #f38f1b !important;
+  color: white !important;
+  border-radius: 0px;
+  border: 0px;
+  transition: 200ms;
+  padding: 0.675rem 1rem; }
+  .user-posts .post-action button:hover {
+    background-color: transparent !important;
+    color: #f38f1b !important; }
+  .user-posts .post-action button:focus {
+    background-color: transparent !important;
+    transform: scale(1.1);
+    box-shadow: none !important;
+    color: #f38f1b !important; }
+.user-posts .post-content {
+  text-align: center; }
+  .user-posts .post-content article:before {
+    text-align: left;
+    content: open-quote;
+    font-size: 300%;
+    font-weight: 900;
+    opacity: 0.3;
+    line-height: 0.1rem;
+    margin-right: 10px;
+    vertical-align: middle; }
+  .user-posts .post-content article:after {
+    content: close-quote;
+    opacity: 0.3;
+    font-size: 300%;
+    font-weight: 900;
+    line-height: 0.1rem;
+    vertical-align: -2rem;
+    margin-left: 10px; }
+.user-posts .comment-block, .user-posts .rate-block {
+  display: none; }
+  .user-posts .comment-block textarea, .user-posts .rate-block textarea {
+    width: 100%;
+    background-color: transparent; }
+  .user-posts .comment-block button, .user-posts .rate-block button {
+    padding: 0.6rem 3rem; }
+
+.tags {
+  padding: 0.3em;
+  border-radius: 2px;
+  color: white;
+  background-color: #055e60; }
+
+.post-settings {
+  position: absolute;
+  right: 1em;
+  top: 1em; }
+  .post-settings .post-settings-trigger i:hover {
+    opacity: 0.4; }
+  .post-settings .post-settings-toogle {
+    display: none;
+    padding: 5px;
+    background-color: white;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 87%; }
+
+.img-holder {
+  display: none;
+  width: 400px;
+  height: 200px;
+  position: relative; }
+  .img-holder img {
+    max-width: 100%;
+    max-height: 100%; }
+  .img-holder button {
+    left: 2%;
+    top: 2%;
+    position: absolute;
+    padding: 0.3rem; }
+
+.comments-section {
+  display: none; }
+  .comments-section .my-button {
+    color: #055e60;
+    border-color: #055e60 !important; }
+    .comments-section .my-button:hover {
+      color: white; }
+  .comments-section h3 {
+    padding-left: 5px;
+    font-size: 1em;
+    font-weight: bold; }
+  .comments-section .comment-content {
+    padding: 5px; }
+    .comments-section .comment-content .comment {
+      background-color: #f2e2cb;
+      padding: 5px; }
+      .comments-section .comment-content .comment:nth-child(even) {
+        background-color: transparent; }
+      .comments-section .comment-content .comment img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover; }
+      .comments-section .comment-content .comment h4 {
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.6 !important; }
+      .comments-section .comment-content .comment p {
+        margin-bottom: 0px; }
+
+.post-button {
+  cursor: pointer;
+  transition-duration: 200ms; }
+  .post-button:hover, .post-button:active {
+    color: #f38f1b !important;
+    opacity: 0.8; }
+
+.rate-icon {
+  font-size: 2em !important;
+  color: #f38f1b;
+  margin-bottom: 10px; }
+  .rate-icon:hover {
+    transform: scale(1.1); }
+  .rate-icon:hover .description {
+    display: block !important; }
+    .rate-icon:hover .description:before {
+      font-size: 14px !important;
+      vertical-align: top !important;
+      position: absolute;
+      left: -20%;
+      right: -20%; }
+  .rate-icon i {
+    color: white;
+    position: absolute; }
+
+.description {
+  display: none; }
+
+.post-rate {
+  transition: 200ms;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  text-align: center;
+  padding-top: 55%;
+  background-color: rgba(5, 94, 96, 0.7); }
+  .post-rate:hover {
+    opacity: 0; }
+  .post-rate .numberCircle {
+    text-align: center;
+    width: 230px;
+    height: 230px;
+    display: inline-block;
+    line-height: 0px;
+    border-radius: 50%;
+    border: 10px solid #f38f1b;
+    font-size: 32px; }
+  .post-rate .numberCircle span {
+    display: inline-block;
+    color: #f38f1b;
+    font-size: 3em;
+    font-weight: 900;
+    font-family: Muli;
+    padding-top: 50%;
+    padding-bottom: 50%;
+    margin-left: 8px;
+    margin-right: 8px; }
+
+.des-1:before {
+  content: "bardzo slabo"; }
+
+.des-2:before {
+  content: "slabo"; }
+
+.des-3:before {
+  content: "srednio"; }
+
+.des-4:before {
+  content: "dobrze"; }
+
+.des-5:before {
+  content: "bardzo dobrze"; }
+
+/*# sourceMappingURL=post.css.map */
