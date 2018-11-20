@@ -2,21 +2,149 @@
 
 @section('content')
     <div class="col-sm-12">
-        <div id="tabs">
-            <ul>
-                <li><a href="#tabs-1">Nunc tincidunt</a></li>
-                <li><a href="#tabs-2">Proin dolor</a></li>
-                <li><a href="#tabs-3">Aenean lacinia</a></li>
+        <div  id="tabs">
+            <ul class="tabs-label">
+                <li class="tab-label"><a href="#tabs-1">Profil ogólny</a></li>
+                <li class="tab-label"><a href="#tabs-2">Praca</a></li>
+                <li class="tab-label"><a href="#tabs-3">Wykształcenie</a></li>
+                <li class="tab-label"><a href="#tabs-4">Aktywność</a></li>
+                <li class="tab-label"><a href="#tabs-5">Dodatkowe informacje</a></li>
             </ul>
-            <div id="tabs-1">
-                <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+            <div class="tab" id="tabs-1">
+                <div class="tab-content">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-4 row">
+                            <div class="user-image" style="margin: unset !important; margin-left: auto; margin-right: auto">
+                                <img src="{{$user->getProfileURL()}}">
+                            </div>
+                            <div class="divider"></div>
+                        </div>
+
+                        <div class="mt-3 col-sm-8">
+
+                            <h2 class="text-left"><span style="font-size: 80%; color: #4e555b">Imię i nazwisko:</span> <strong>{{$user->name}} </strong></h2>
+
+                            <h2><span style="font-size: 80%; color: #4e555b">Płeć:</span> <strong> {{$user->getSex()}} </strong></h2>
+
+                            <h2><span style="font-size: 80%; color: #4e555b">Data urodzenia:</span> <strong> {{$user->date_of_birth}} </strong></h2>
+
+                            <h2><span style="font-size: 80%; color: #4e555b">Miasto:</span><strong>{{$user->city}}</strong></h2>
+
+                            <div class="rate-panel d-flex mt-5" >
+                                <div class="col-sm-4" style="z-index: 1000">
+                                    <div class="c100 p{{number_format(\App\Rate::getPercentageRate(\App\Rate::getRate($user), 2), 0)}} big orange circle">
+                                        <div class="description">
+                                            <div class="d-block">
+                                                <p >ogólna ocena:</p>
+                                                <p class="rate">{{number_format(\App\Rate::getRate($user), 2)}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="slice">
+                                            <div class="bar"></div>
+                                            <div class="fill"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+
+                                    <svg class="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1381px" height="219px" viewBox="30 1 864 137" preserveAspectRatio="xMidYMid meet" ><rect id="svgEditorBackground" x="0" y="0" width="1380" height="840" style="fill: none; stroke: none;"/><polyline style="stroke:#055e60;fill:none;stroke-width:1px;" id="e1_polyline" points="11 139 136 13 852 11"/><polyline style="stroke:black;fill:none;" stroke-width="0.6256335988414193" id="e2_polyline" points="159.285 11.0033"/></svg>
+                                    <div class="c100 p{{number_format(\App\Rate::getPercentageRate(\App\Rate::getUserEmployeeRate($user, 'diligence'), 2), 0)}} big orange circle small-circle">
+                                        <div class="description">
+                                            <div class="d-block">
+                                                <p >Pracowitość:</p>
+                                                <p class="rate">{{number_format(\App\Rate::getUserEmployeeRate($user, 'diligence'), 2)}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="slice">
+                                            <div class="bar"></div>
+                                            <div class="fill"></div>
+                                        </div>
+                                    </div>
+                                    <div class="c100 p{{number_format(\App\Rate::getPercentageRate(\App\Rate::getUserEmployeeRate($user, 'knowledge'), 2), 0)}} big orange circle small-circle">
+                                        <div class="description">
+                                            <div class="d-block">
+                                                <p >Wiedza:</p>
+                                                <p class="rate">{{number_format(\App\Rate::getUserEmployeeRate($user, 'knowledge'), 2)}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="slice">
+                                            <div class="bar"></div>
+                                            <div class="fill"></div>
+                                        </div>
+                                    </div>
+                                    <div class="c100 p{{number_format(\App\Rate::getPercentageRate(\App\Rate::getUserEmployeeRate($user, 'punctuality'), 2), 0)}} big orange circle small-circle">
+                                        <div class="description">
+                                            <div class="d-block">
+                                                <p >Punktualność:</p>
+                                                <p class="rate">{{number_format(\App\Rate::getUserEmployeeRate($user, 'punctuality'), 2)}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="slice">
+                                            <div class="bar"></div>
+                                            <div class="fill"></div>
+                                        </div>
+                                    </div>
+                                    <h2 class="text-center">łączna liczba ocen: {{\App\Rate::getCountUserRates($user)}}</h2>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+                            </div>
+
+
+                    </div>
+                    @if(\Illuminate\Support\Facades\Auth::user() == $user)
+                        <div class="p-2 text-center">
+                            <button  data-toggle="modal" data-target="#add_photo" style="background-color: black" class="my-button text-center ">Dodaj zdjęcie</button>
+
+                        </div>
+                    @endif
+                    <div class="photos">
+
+                        @foreach($user->getActiveImages() as $image)
+                        <div class="photo">
+                            <img onclick="loadGallery(this)" src="{{url('public/users/'.$user->id.'/'.$image->path)}}">
+                            <div class="footer d-flex justify-content-center align-items-center">
+                                <p>{{$image->tags}}</p>
+                            </div>
+                        </div>
+
+                            @endforeach
+                    </div>
+                </div>
             </div>
-            <div id="tabs-2">
-                <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+            <div class="tab" id="tabs-2">
+
+                <a href="#employee-create" data-toggle="modal" class="hvr-sweep-to-right my-button blue_button">Dodaj firmę w której pracowałeś lub pracujesz</a>
+                @include('user.partials.timeline')
             </div>
-            <div id="tabs-3">
-                <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-                <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+
+            <div class="tab" id="tabs-3">
+
+                @include('user.education_index')
+            </div>
+
+            <div class="tab" id="tabs-4">
+                <div class="tab-content">
+                @include('post.user_posts')
+                </div>
+            </div>
+
+
+            <div class="tab" id="tabs-5">
+                <div class="tab-content">
+
+                    <a href="{{route('user.company.create')}}" class="my-button text-center"> Dodaj swoją firmę</a>
+
+
+                </div>
+
             </div>
         </div>
 

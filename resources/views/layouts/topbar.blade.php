@@ -7,8 +7,20 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <li cass="nav-item active">
-                    <a class="nav-link" href="#">Znajomi </a>
+
+                @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('admin.index')}}"> Panel administratora</a>
+                </li>
+                @endif
+                <li class="nav-item active">
+                    @if(count($unaccepted_friends = \Illuminate\Support\Facades\Auth::user()->getUnacceptedFriends()) != 0)
+                        <a style="color: darkorange" class="nav-link" href="{{route('friends.index')}}">Znajomi({{count($unaccepted_friends)}}) </a>
+
+                    @else
+                         <a class="nav-link" href="{{route('friends.index')}}">Znajomi </a>
+                    @endif
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Strona główna</a>

@@ -6,11 +6,21 @@
  */
 
 require('./bootstrap');
-
-import 'chart.js';
 import 'jquery-ui';
 
+import 'jquery-ui/ui/effect.js';
+import 'chart.js';
+import 'jquery-ui';
+import 'jquery-ui/ui/widgets/autocomplete';
+import 'jquery-ui/ui/widgets/tooltip';
+import 'jquery-ui/ui/widgets/datepicker';
 import 'jquery-ui/ui/widgets/tabs.js';
+import 'jquery-ui/ui/widgets/resizable.js';
+import 'jquery-ui/ui/widgets/button.js';
+
+
+require ('jquery-ui/ui/widgets/autocomplete.js');
+window.jquery_ui = require('jquery-ui');
 window.Vue = require('vue');
 /**
  * Next, we will create a fresh Vue application instance and attach it to

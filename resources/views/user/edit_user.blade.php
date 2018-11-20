@@ -91,60 +91,6 @@
 
         </div>
 
-        <div class="modal fade" id="add_photo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <form action="{{route('add_photo.user', ['user' => $user])}}" method="POST" enctype="multipart/form-data">
-                @CSRF
 
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Dodaj Zdjęcie</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <input id="photo_input" type="file" name="photo_input" class="form-control " multiple>
-                        <div class="row" style="display: none" id="photo-content">
-
-                            <div class="col-5">
-                                <img src="#" id="photo">
-                            </div>
-
-                                <div class="col-5 m-5">
-                                    <div class="form-group">
-                                        <label for="tags"> Tagi </label>
-                                        <input class="form-control" type="text" name="tags" >
-                                    </div>
-
-                                    <div class="form-check form-check-inline">
-
-                                        <input class="form-check-input" name="active" type="radio" id="active" value="1" checked>
-                                        <label class="form-check-label" for="inlineCheckbox1">Widoczne</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="active" type="radio" id="active" value="0">
-                                        <label class="form-check-label" for="inlineCheckbox2">Nie widoczne</label>
-                                    </div>
-
-                                    <div class="form-check mt-2">
-
-                                        <input class="form-check-input" type="checkbox" name="profile"  >
-                                        <label class="form-check-label" for="tags"> profilowe </label>
-                                    </div>
-
-
-                                </div>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
-                        <button type="submit" class="btn btn-primary">Dodaj Zdjęcie</button>
-                    </div>
-                </div>
-            </div>
-            </form>
-        </div>
 
     @endsection

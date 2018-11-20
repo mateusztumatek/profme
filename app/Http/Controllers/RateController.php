@@ -18,10 +18,12 @@ class RateController extends Controller
 
         $rate = Rate::create([
             'user_id' => $request->user_id,
+            'company_id' => null,
             'elem_id' => $request->elem_id,
             'elem_type' => $request->elem_type,
             'rate' => $request->rate,
         ]);
+
         return back()->with(['message' => 'ocena została dodana!']);
     }
 

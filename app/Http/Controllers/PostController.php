@@ -165,12 +165,12 @@ class PostController extends Controller
         if(file_exists(public_path().'/public/users/'. $post->user_id.'/'.$post->image)){
             unlink(public_path().'/public/users/'. $post->user_id.'/'.$post->image);
         }
-        $this->deleteTags($post);
+        $post->deleteTags();
+        $post->deleteRates();
+       /* $post->deleteComments();*/
         $post->delete();
         return back()->with(['message' => 'twój post został usunięty poprawnie']);
     }
 
-    public function deleteTags(Post $post){
-        DB::table('tags')->where('elem_id', $post->id)->delete();
-    }
+
 }

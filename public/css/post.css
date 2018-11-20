@@ -7,15 +7,6 @@
   .user-posts .single-post .header {
     margin-bottom: 10px;
     align-items: center; }
-    .user-posts .single-post .header .profile-img {
-      width: 50px;
-      height: 50px;
-      overflow: hidden;
-      border-radius: 50%; }
-      .user-posts .single-post .header .profile-img img {
-        height: 50px;
-        width: 50px;
-        object-fit: cover; }
     .user-posts .single-post .header h3 {
       font-weight: 600;
       font-size: 1.3rem;
@@ -203,5 +194,15 @@
 
 .des-5:before {
   content: "bardzo dobrze"; }
+
+.profile-img {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 50%; }
+  .profile-img img {
+    height: 50px;
+    width: 50px;
+    object-fit: cover; }
 
 /*# sourceMappingURL=post.css.map */

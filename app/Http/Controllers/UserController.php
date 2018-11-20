@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
+use App\Education;
+use App\Employee;
 use App\Image;
 use App\User;
+use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Validator;
 use Illuminate\Auth;
@@ -12,6 +16,97 @@ class UserController extends Controller
 {
     public function edit(User $user){
         return view('user.edit_user', compact('user'));
+    }
+    public function company_create(){
+        return view('user.company.create', compact('user'));
+    }
+
+    public function company_store(User $user, Request $request){
+        $file = $request->file('logo');
+        $this->validate($request, [
+           'country' => 'required',
+           'city' => 'required',
+           'nip' => 'required|digits:10|unique:companies,nip',
+            'email' => 'required|email|unique:companies,email',
+            'logo' => 'mimes:jpeg,jpg,png'
+
+        ]);
+        if ($request->hasFile('logo')) {
+
+            $filename = $request->file('logo')->getClientOriginalName();
+            $extension = $request->file('logo')->getClientOriginalExtension();
+            $picture = sha1($filename . time()) . '.' . $extension;
+        }
+        else{
+            $picture = null;
+        }
+        $company = Company::create([
+            'user_id' => $user->id,
+            'email' => $request['email'],
+            'official_name' => $request['name'],
+            'city' => $request['city'],
+            'postal_code' => $request['postal_code'],
+            'street' => $request['street'],
+            'street_number' => $request['street_number'],
+            'country' => $request['country'],
+            'nip' => $request['nip'],
+            'image' => $picture,
+        ]);
+        if($request->has('logo')){
+            $upload_path = 'public/users/' . $user->id .'/company/'. $company->id;
+            $upload_success = $file->move($upload_path, $picture);
+        }
+
+
+        return back()->with(['succesfull' => true]);
+    }
+
+    public function company_edit(Company $company, Request $request){
+        $user = User::findOrFail($company->user_id);
+        $file = $request->file('logo');
+        $this->validate($request, [
+            'country' => 'required',
+            'city' => 'required',
+            'nip' => 'required|digits:10',
+            'email' => 'required|email',
+            'logo' => 'mimes:jpeg,jpg,png'
+
+        ]);
+        if ($request->hasFile('logo')) {
+
+            $filename = $request->file('logo')->getClientOriginalName();
+            $extension = $request->file('logo')->getClientOriginalExtension();
+            $picture = sha1($filename . time()) . '.' . $extension;
+            $company->image = $picture;
+        }
+        $company->email = $request->email;
+        $company->official_name = $request->name;
+        $company->city = $request->city;
+        $company->postal_code = $request->postal_code;
+        $company->street = $request->street;
+        $company->street_number = $request->street_number;
+        $company->country = $request->country;
+        $company->nip = $request->nip;
+        $company->update();
+      /*  $company = Company::create([
+            'user_id' => $user->id,
+            'email' => $request['email'],
+            'official_name' => $request['name'],
+            'city' => $request['city'],
+            'postal_code' => $request['postal_code'],
+            'street' => $request['street'],
+            'street_number' => $request['street_number'],
+            'country' => $request['country'],
+            'nip' => $request['nip'],
+            'image' => $picture,
+        ]);*/
+        if($request->has('logo')){
+            $upload_path = 'public/users/' . $user->id .'/company/'. $company->id;
+            $upload_success = $file->move($upload_path, $picture);
+        }
+
+
+        return back()->with(['message' => 'twoja firma została edytowana pomyślnie']);
     }
 
     public function update(User $user, Request $request){
@@ -36,7 +131,10 @@ class UserController extends Controller
         return back();
     }
     public  function show( User $user){
-        return view('user.user', compact('user'));
+        $posts = Post::where('user_id', $user->id)->get();
+        $employees = Employee::where('user_id', $user->id)->orderBy('since', 'desc')->get();
+        $educations = Education::where('user_id', $user->id)->get();
+        return view('user.user', compact('user', 'employees', 'educations', 'posts'));
     }
 
 

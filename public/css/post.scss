@@ -14,18 +14,7 @@ $primary-color: #055e60;
     .header{
       margin-bottom: 10px;
       align-items: center;
-      .profile-img{
-        width: 50px;
-        height: 50px;
-        overflow: hidden;
-        border-radius: 50%;
-        img{
-         height: 50px;
-          width: 50px;
-          object-fit: cover;
-        }
 
-      }
       h3{
         font-weight: 600;
         font-size: 1.3rem;
@@ -298,4 +287,16 @@ $primary-color: #055e60;
   &:before{
     content:"bardzo dobrze";
   }
+}
+.profile-img{
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 50%;
+  img{
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+  }
+
 }

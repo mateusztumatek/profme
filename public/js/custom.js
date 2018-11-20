@@ -1,4 +1,29 @@
+var availableTags = [
+    "ActionScript",
+    "AppleScript",
+    "Asp",
+    "BASIC",
+    "C",
+    "C++",
+    "Clojure",
+    "COBOL",
+    "ColdFusion",
+    "Erlang",
+    "Fortran",
+    "Groovy",
+    "Haskell",
+    "Java",
+    "JavaScript",
+    "Lisp",
+    "Perl",
+    "PHP",
+    "Python",
+    "Ruby",
+    "Scala",
+    "Scheme"
+];
 
+var search_url = base_url + '/autocomplete/'+$("#searchbox_users").attr('data-type');
 function loadGallery (img) {
     $('#photos').modal('show');
     var my_modal = document.getElementById('photos');
@@ -57,6 +82,32 @@ function show_notifications(notifications) {
 
 
 }
+
+function ExtendAutocomplete() {
+    $('#searchbox_users').autocomplete({
+
+        source: search_url,
+        select: function (event, ui) {
+            if(search_url == base_url+'/autocomplete/users'){
+                window.location.href = base_url+'/admin_dashboard/user/'+ ui.item.value;
+            }
+            if(search_url == base_url+'/autocomplete/posts'){
+                window.location.href = base_url+'/admin_dashboard/post/'+ ui.item.value;
+            }
+            if(search_url == base_url+'/autocomplete/companies'){
+                window.location.href = base_url+'/admin_dashboard/company/'+ ui.item.value;
+            }
+
+        },
+
+    }).autocomplete( "instance" )._renderItem = function( ul, item ) {
+        if(jQuery.isEmptyObject(item)) return $(null);
+        return $( "<li></li>" )
+            .append( "<a>" + item.value + " " + item.email + "</a>")
+            .appendTo( ul );
+    };
+}
+
 $('#tag-input').tagsinput({
     confirmKeys: [13, 44]
 });
@@ -65,16 +116,58 @@ $('#tag-input').tagsinput({
     cancelConfirmKeysOnEmpty: true,
 });
 
-
-
-
-
-
-
 $('#a-input').on('click', function () {
    console.log($('#tag-input').val());
 });
+
+function submitFormEmployee(elem, event) {
+    event.preventDefault();
+    var my_form = new FormData(elem);
+    var form = elem;
+    $.ajax({
+        method: 'POST',
+        url: $(elem).attr('action'),
+        data: my_form,
+        processData: false,
+        contentType: false,
+
+    }).done(function (msg) {
+        $('#employee-panel').replaceWith(msg);
+    })
+
+}
+
+
+
 $(function () {
+    $(document).on({
+        ajaxStart: function() { $(".content").append("<div class=\"loader\">\n" +
+            "                        <div class=\"lds-dual-ring\"></div>\n" +
+            "                    </div>");
+        },
+
+        ajaxStop: function() { $(".loader").remove();
+        }
+    });
+    $('.employee-confirm-form').on('submit', function (event) {
+        event.preventDefault();
+        var my_form = new FormData(this);
+        var form = this;
+        $.ajax({
+            method: 'POST',
+            url: $(this).attr('action'),
+            data: my_form,
+            processData: false,
+            contentType: false,
+
+        }).done(function (msg) {
+            $('#employee-panel').replaceWith(msg);
+        })
+
+    });
+    $('#searchbox_users').keypress(function () {
+       ExtendAutocomplete();
+    });
     $('#tabs').tabs();
     setTimeout(function() {
         $(".errors").hide('Fade', null, 300)
@@ -82,12 +175,24 @@ $(function () {
     $("#photo_input").change(function () {
         console.log('zmien blah');
         read_url(this);
-    })
+    });
 
     $("#settings").on('click', function (event) {
-        console.log('cos tam');
+
         event.preventDefault();
-        ShowOrHide($('.dropdown-menu'));
+        ShowOrHide($('#settings_menu'));
+    });
+
+
+
+
+
+
+    $('#searchbox').keypress(function (e) {
+        if(e.keyCode === 13){
+            window.location.href = base_url+'/admin_dashboard/user/'+ $(this).val();
+        }
+
     });
 
     $('#post-image-holder').on('change', function () {
@@ -103,6 +208,58 @@ $(function () {
         }
             reader.readAsDataURL(this.files[0]);
 
+    });
+    $('#company_modal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        company_id = button.data('whatever');
+        $.get(base_url + '/admin_dashboard/get/company/'+ company_id, function (data) {
+           $('#company_name').text(data['official_name']);
+           $('#official_name_input').val(data['official_name']);
+           $('#email_input').val(data['email']);
+           $('#city_input').val(data['city']);
+           $('#country_input').val(data['country']);
+           $('#postal_code_input').val(data['postal_code']);
+           $('#street_input').val(data['street']);
+           $('#street_number_input').val(data['street_number']);
+           $('#nip_input').val(data['nip']);
+           if(data['is_verify']){
+               $('#is_verify_input').attr('checked', true);
+           }
+           if(data['image']){
+               $('#company_logo_placeholder').attr('src', base_url+ '/public/users/'+ data['user_id'] + '/company/' + data['id'] + '/' + data['image']);
+               $('#company_logo_placeholder').css('display', 'block');
+           }
+           $('#company_edit_form').attr('action', base_url+'/admin_dashboard/company/edit/'+ data['id']);
+        });
+        $(this).modal();
+    });
+
+    $('#user_permission').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+
+         user_id = button.data('whatever');
+        $('#change_permission_form').attr('action', 'user/'+ user_id + '/change_permission');
+        $('#delete_user_form').attr('action', 'user/delete/' + user_id);
+       console.log('otworzylem modal z uprawnieniami uzytkownika');
+        $(':input[value=admin]').attr("checked", false);
+        $(':input[value=moderator]').attr("checked", false);
+        $(':input[value=user]').attr("checked", false);
+       $.get('user/'+ user_id+'/permission', function (data) {
+         $('#user_name').text(data['user']['name']);
+           jQuery.each(data['roles'], function (i, val) {
+               if(val['name'] == 'admin'){
+                   $(':input[value=admin]').attr("checked", true);
+               }
+               if(val['name'] == 'moderator'){
+                   $(':input[value=moderator]').attr("checked", true);
+               }
+               if(val['name'] == 'user'){
+                   $(':input[value=user]').attr("checked", true);
+               }
+           })
+       });
+
+        $(this).modal();
     });
 
     $('#delete-post-image').on('click', function () {
@@ -141,19 +298,7 @@ $(function () {
 
     $('.add-comment-form').on('submit', function (event) {
 
-        event.preventDefault();
-        var my_form = new FormData(this);
-        var form = this;
-        $.ajax({
-            method: 'POST',
-            url: $(this).attr('action'),
-            data: my_form,
-            processData: false,
-            contentType: false,
 
-        }).done(function (msg) {
-            add_comment(msg, form );
-        })
     });
 
 
@@ -171,7 +316,10 @@ function read_url(input) {
 
         reader.onload = function(e) {
             $('#photo').attr('src', e.target.result);
-            $('#photo-content').css('display', 'flex');
+            if($('#photo-content').length > 0){
+                $('#photo-content').css('display', 'flex');
+            }
+
         }
 
         reader.readAsDataURL(input.files[0]);
@@ -214,8 +362,8 @@ function cancel_edit(elem) {
 }
 
 function add_comment(comment, object) {
-    console.log(comment);
-    var placeholder = $('.comment-content').prepend('  <div id="'+comment.id+'" class="comment row justify-content-between">\n' +
+    var placeholder = $(object).parent().parent().siblings('.post-content').find('.comments-section').find('.comment-content');
+    $(placeholder).prepend('  <div id="'+comment.id+'" class="comment row justify-content-between">\n' +
         '                                    <div class="col-md-2">\n' +
         '                                        <img src="'+comment.user_image+'">\n' +
         '                                    </div>\n' +
@@ -239,5 +387,21 @@ function add_comment(comment, object) {
         $(object).find('textarea[name=content]').val("");
         $(object).parent().parent().siblings('.post-content').find('.comments-section').show(200);
 
+}
+
+function add_comment_submit(form, event) {
+    event.preventDefault();
+    var my_form = new FormData(form);
+    var form = $(form);
+    $.ajax({
+        method: 'POST',
+        url: $(form).attr('action'),
+        data: my_form,
+        processData: false,
+        contentType: false,
+
+    }).done(function (msg) {
+        add_comment(msg, form);
+    })
 }
 

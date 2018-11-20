@@ -21,7 +21,13 @@ class Post extends Model
         $url = asset('public/users/'. $this->user_id . '/' . $this->image);
         return $url;
     }
+    public function deleteComments(){
+        \App\Comment::where('post_id', $this->id)->delete();
+    }
 
+    public function deleteRates(){
+        Rate::where('elem_id', $this->id)->where('elem_type', 'post')->delete();
+    }
     public function Tags(){
         return DB::table('tags')->where('type', 'post')->where('elem_id', $this->id)->get();
     }
@@ -36,5 +42,9 @@ class Post extends Model
 
     public function getRates(){
         return Rate::where('elem_type', 'post')->where('elem_id', $this->id)->get();
+    }
+
+    public function deleteTags(){
+        DB::table('tags')->where('elem_id', $this->id)->delete();
     }
 }

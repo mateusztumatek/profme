@@ -6,12 +6,11 @@
         @endif
 
 
-    @if(\Illuminate\Support\Facades\Session::has('errors'))
-        @foreach(\Illuminate\Support\Facades\Session::get('errors') as $error)
+        @foreach($errors->all() as $error)
         <p>
             {{$error}}
         </p>
 
             @endforeach
-        @endif
+
 </div>

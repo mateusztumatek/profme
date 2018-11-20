@@ -57,10 +57,12 @@ class Kernel extends HttpKernel
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'admin_dashboard' => \App\Http\Middleware\admin_dashboard::class,
         'verify' => \App\Http\Middleware\RedirectIfNotVerified::class,
         'post_permission' => \App\Http\Middleware\post_permission::class,
         'user-auth' => \App\Http\Middleware\UserAuthentication::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+
     ];
 }

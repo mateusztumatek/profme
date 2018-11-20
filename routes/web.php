@@ -25,12 +25,36 @@ Route::middleware(['auth','verify'])->group(function (){
     Route::post('/settings/delete_image/{image}', 'UserController@deleteImage')->name('delete_image.user');
     /* USERS ROUTE */
     Route::get('/user/{user}', 'UserController@show')->name('user.show');
+    Route::get('/user/create/company/create', 'UserController@company_create')->name('user.company.create');
+    Route::post('/user/create/company/store/{user}', 'UserController@company_store')->name('user.company.store');
+    Route::post('/user/create/company/edit/{company}', 'UserController@company_edit')->name('user.company.edit');
+
+
+    /*ADMIN ROUTE */
+    Route::middleware(['admin_dashboard'])->group(function (){
+        Route::get('/admin_dashboard/', 'AdminController@index')->name('admin.index');
+        /* USER TABLE */
+        Route::get('/user/{user}/permission', 'AdminController@userPermission');
+        Route::post('/user/{user}/change_permission', 'AdminController@userChangePermission')->name('admin.change_permission');
+        Route::post('/user/delete/{user}', 'AdminController@deleteUser')->name('admin.delete_user');
+        Route::get('/admin_dashboard/user/{term}', 'AdminController@showUser')->name('admin.show_user');
+        /*END USER TABLE */
+
+        /* COMPANY TABLE */
+        Route::get('admin_dashboard/get/company/{company}', 'AdminController@getCompany');
+        Route::get('admin_dashboard/company/{term}', 'AdminController@showCompany')->name('admin.show_company');
+        Route::post('admin_dashboard/company/edit/{company}', 'AdminController@editCompany');
+        /* END COMPANY TABLE */
+    });
+
+
+    /*END ADMIN ROUTE */
+
 
     /* POST ROUTES */
     Route::group(['middleware' => 'user-auth'], function (){
 
     });
-    Route::get('posts/{user}', 'PostController@user_posts');
     Route::get('/post/create', 'PostController@create')->name('post.create');
     Route::post('/post/store', 'PostController@store')->name('post.store');
     Route::get('/post/edit/{post}', 'PostController@edit')->name('post_edit')->middleware('post_permission');
@@ -55,7 +79,39 @@ Route::middleware(['auth','verify'])->group(function (){
 
     /*END RATE*/
 
+    /*  EDUCATION ROUTE */
 
+    Route::post('/education/{user}', 'EducationController@store')->name('education.store');
+    Route::post('/education/delete/{education}', 'EducationController@delete')->name('education.delete');
+    Route::post('/education/update/{education}', 'EducationController@update')->name('education.update');
+    Route::get('/education/edit/{education}', 'EducationController@edit')->name('education.edit');
+
+
+    /*FRIEND ROUTES */
+    Route::get('/friends', 'FriendController@index')->name('friends.index');
+    Route::get('/friends/{term}', 'FriendController@searchFriends');
+    Route::post('/friends/store', 'FriendController@store')->name('friends.store');
+    Route::post('/friends/delete', 'FriendController@delete')->name('friends.delete');
+    Route::post('/friends/accept', 'FriendController@accept')->name('friends.accept');
+    Route::post('/friends/decline', 'FriendController@decline')->name('friends.decline');
+
+
+    /*END FRIEND ROUTES*/
+
+    /*END EDUCATION ROUTE*/
+    /*COMPANY ROUTE*/
+    Route::get('/company/{company}', 'CompanyController@show');
+    Route::post('/employer/add_employer', 'EmployeeController@store');
+    Route::post('/confirm/employee/{employee}', 'CompanyController@confirmEmployee')->name('confirm.employee');
+    Route::post('/employee/{employee}/rate/diligence', 'CompanyController@rateDiligenceEmployee')->name('rate.diligence');
+    Route::post('/rate/{rate}/delete/{employee}', 'CompanyController@deleteRateDiligence')->name('delete.rate.diligence');
+    Route::post('/delete/employee/{employee}', 'CompanyController@deleteEmployee')->name('delete.employee');
+    /*END COMPANY ROUTE*/
+    /* SEARCH / AUTOCOMPLETE ROUTES */
+        Route::get('autocomplete/users', 'SearchController@userAutocomplete');
+        Route::get('autocomplete/companies', 'SearchController@companiesAutocomplete');
+
+    /*  END SEARCH AUTOCOMPLETE ROUTES*/
     /* END POST ROUTES */
 });
 

@@ -1,6 +1,4 @@
-@extends('layouts.app')
 
-@section('content')
 
     <div class="col-sm-12 user-posts">
         <h2 class="text-center" style="font-weight: 900">Posty użytkownika <a href="{{route('user.show', ['user' => \Illuminate\Support\Facades\Auth::user()])}}">{{$user->name}}</a></h2>
@@ -65,7 +63,7 @@
                         </div>
 
                         <div class="col-12 comment-block mb-1 text-center ">
-                            <form class="add-comment-form" action="{{route('comment.store')}}" method="POST">
+                            <form class="add-comment-form" onsubmit="add_comment_submit(this, event)" action="{{route('comment.store')}}" method="POST">
                                 @CSRF
                                 <input hidden name="user_id" value="{{\Illuminate\Support\Facades\Auth::id()}}">
                                 <input hidden name="post_id" value="{{$post->id}}">
@@ -111,13 +109,14 @@
                                 <p class="mt-2 mb-0 ml-1 tags" style="font-size: 85%;"> #{{$tag->tag}}  </p>
                             @endforeach
                         </div>
+                        <div class="comments-section">
+                            <hr>
+                            <h3 class="text-left"> Komentarze: </h3>
+                            <div class="comment-content">
+                                    @if(!$post->Comments()->isEmpty() && $post->user_id == \Illuminate\Support\Facades\Auth::id())
 
-                 @if(!$post->Comments()->isEmpty() && $post->user_id == \Illuminate\Support\Facades\Auth::id())
 
-                            <div class="comments-section">
-                                <hr>
-                                <h3 class="text-left"> Komentarze: </h3>
-                                <div class="comment-content">
+
 
                                     @foreach($post->Comments() as $comment)
                                     <div id="{{$comment->id}}" class="comment row justify-content-between">
@@ -147,11 +146,9 @@
 
                                     </div>
                                         @endforeach
-
+                                    @endif
                                 </div>
-
                             </div>
-                            @endif
                         @if(!$post->getRates()->isEmpty())
                         <div class="post-statistic mt-3">
                             <div class="title">
@@ -252,6 +249,7 @@
 
 
                     </div>
+                    @if($post->user_id == \Illuminate\Support\Facades\Auth::id())
                     <div class="post-settings">
                         <div  class="post-settings-trigger text-right">
                             <i onclick="ShowOrHide($(this).parent().siblings('.post-settings-toogle'))" class="fa fa-cogs"></i>
@@ -270,6 +268,7 @@
 
                         </div>
                     </div>
+                        @endif
                 </div>
 
             </div>
@@ -303,4 +302,3 @@
         var users_rate_route = '{{route('users_rate', ['post' => null, 'rate' => null])}}';
 
     </script>
-    @endsection
