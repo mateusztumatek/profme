@@ -5,10 +5,14 @@
         <div  id="tabs">
             <ul class="tabs-label">
                 <li class="tab-label"><a href="#tabs-1">Profil ogólny</a></li>
+                @if(\App\Friend::isFriends($user, \Illuminate\Support\Facades\Auth::user()) || \Illuminate\Support\Facades\Auth::id() == $user->id)
                 <li class="tab-label"><a href="#tabs-2">Praca</a></li>
                 <li class="tab-label"><a href="#tabs-3">Wykształcenie</a></li>
                 <li class="tab-label"><a href="#tabs-4">Aktywność</a></li>
+                @endif
+                @if(\Illuminate\Support\Facades\Auth::id() == $user->id)
                 <li class="tab-label"><a href="#tabs-5">Dodatkowe informacje</a></li>
+                    @endif
             </ul>
             <div class="tab" id="tabs-1">
                 <div class="tab-content">
@@ -21,6 +25,31 @@
                         </div>
 
                         <div class="mt-3 col-sm-8">
+                            @if(\Illuminate\Support\Facades\Auth::id() != $user->id)
+                                @if(!\App\Friend::isFriends($user, \Illuminate\Support\Facades\Auth::user()))
+                                    @if(\App\Friend::isUnacceptFriends($user, \Illuminate\Support\Facades\Auth::user()))
+                                        <div class="float-right">
+                                            <p>wysłałeś zaproszenie temu użytkownikowi</p>
+                                        </div>
+                                        @else
+                                            <form class="float-right" action="{{route('friends.store')}}" method="POST">
+                                                @CSRF
+                                                <input type="hidden" name="user_1" value="{{\Illuminate\Support\Facades\Auth::id()}}">
+                                                <input type="hidden" name="user_2" value="{{$user->id}}">
+                                                <button class="btn my-button" type="submit"> Dodaj znajomego </button>
+                                            </form>
+                                        @endif
+                                @else
+                                    <form class="float-right" action="{{route('friends.delete')}}" method="POST">
+                                        @CSRF
+                                        <input type="hidden" name="user_1" value="{{\Illuminate\Support\Facades\Auth::id()}}">
+                                        <input type="hidden" name="user_2" value="{{$user->id}}">
+                                        <button class="btn my-button" type="submit"> usuń znajomego </button>
+                                    </form>
+
+                                    @endif
+                            @endif
+
 
                             <h2 class="text-left"><span style="font-size: 80%; color: #4e555b">Imię i nazwisko:</span> <strong>{{$user->name}} </strong></h2>
 
@@ -86,6 +115,7 @@
                                     </div>
                                     <h2 class="text-center">łączna liczba ocen: {{\App\Rate::getCountUserRates($user)}}</h2>
                                 </div>
+
                             </div>
 
 
@@ -119,24 +149,28 @@
                     </div>
                 </div>
             </div>
+            @if(\App\Friend::isFriends($user, \Illuminate\Support\Facades\Auth::user()) || $user->id == \Illuminate\Support\Facades\Auth::id())
             <div class="tab" id="tabs-2">
-
-                <a href="#employee-create" data-toggle="modal" class="hvr-sweep-to-right my-button blue_button">Dodaj firmę w której pracowałeś lub pracujesz</a>
+                @if($user->id == \Illuminate\Support\Facades\Auth::id())
+                 <a href="#employee-create" data-toggle="modal" class="hvr-sweep-to-right my-button blue_button">Dodaj firmę w której pracowałeś lub pracujesz</a>
+                @endif
                 @include('user.partials.timeline')
             </div>
-
+            @endif
+            @if(\App\Friend::isFriends($user, \Illuminate\Support\Facades\Auth::user()) || $user->id == \Illuminate\Support\Facades\Auth::id())
             <div class="tab" id="tabs-3">
 
                 @include('user.education_index')
             </div>
-
+            @endif
+            @if(\App\Friend::isFriends($user, \Illuminate\Support\Facades\Auth::user()) || $user->id == \Illuminate\Support\Facades\Auth::id())
             <div class="tab" id="tabs-4">
                 <div class="tab-content">
                 @include('post.user_posts')
                 </div>
             </div>
-
-
+            @endif
+            @if(\Illuminate\Support\Facades\Auth::id() == $user->id)
             <div class="tab" id="tabs-5">
                 <div class="tab-content">
 
@@ -146,6 +180,7 @@
                 </div>
 
             </div>
+                @endif
         </div>
 
     </div>

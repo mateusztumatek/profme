@@ -234,6 +234,7 @@ $(function () {
         $(this).modal();
     });
 
+
     $('#user_permission').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
 
@@ -405,3 +406,20 @@ function add_comment_submit(form, event) {
     })
 }
 
+function openReportModal(elem_type, elem_id, elem_name, user_id) {
+    $('#report_form').find('#elem_id').attr('value', elem_id);
+    $('#report_form').find('#user_id').attr('value', user_id);
+    $('#report_form').find('#elem_type').attr('value', elem_type);
+    $('#report_form').find('#typ').text(elem_type);
+    $('#report_form').find('#nazwa').text(elem_name);
+
+    $('#report_modal').modal();
+}
+
+function showOtherReports(elem) {
+    $.get('other_reports/'+ $(elem).attr('data-report_id'), function (data) {
+        console.log(data);
+        $('#other_reports').replaceWith(data);
+        $('#other_reports').modal();
+    });
+}

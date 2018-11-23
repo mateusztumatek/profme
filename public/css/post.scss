@@ -4,7 +4,17 @@ $primary-color: #055e60;
 
 .user-posts{
   .single-post{
-
+    a{
+      transition: 200ms;
+      color: $primary-color !important;
+      &:hover{
+        text-decoration: none !important;
+        opacity: 0.9;
+      }
+    }
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     position: relative;
     padding: 10px;
     width: 100%;
@@ -299,4 +309,17 @@ $primary-color: #055e60;
     object-fit: cover;
   }
 
+}
+
+.report{
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  padding: 10px;
+  background-color: $primary-color;
+  border-radius: 100%;
+  a{
+    font-size: 16px !important;
+    color: #ff4558 !important;
+  }
 }

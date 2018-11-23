@@ -806,6 +806,12 @@ td img {
   to {
     opacity: 0;
     height: 0px; } }
+.friends a {
+  transition: all 200ms;
+  color: #055e60 !important; }
+  .friends a:hover {
+    text-decoration: none;
+    opacity: 0.9; }
 .friends .friend {
   align-items: center;
   padding: 5px 0px 5px 0px;
@@ -857,5 +863,12 @@ td img {
 
 .color_orange {
   color: #f38f1b !important; }
+
+.action a, .action button {
+  color: #212121 !important;
+  border-color: #212121 !important; }
+  .action a:hover, .action button:hover {
+    color: white !important;
+    border-color: white !important; }
 
 /*# sourceMappingURL=css.css.map */

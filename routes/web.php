@@ -45,6 +45,11 @@ Route::middleware(['auth','verify'])->group(function (){
         Route::get('admin_dashboard/company/{term}', 'AdminController@showCompany')->name('admin.show_company');
         Route::post('admin_dashboard/company/edit/{company}', 'AdminController@editCompany');
         /* END COMPANY TABLE */
+        Route::post('report/accept', 'ReportController@accept')->name('report.accept');
+        Route::get('other_reports/{report}', 'ReportController@getOtherReports');
+        Route::post('reports/delete', 'ReportController@delete')->name('reports.delete');
+        Route::post('reports/mark_seen', 'ReportController@markSeen')->name('reports.mark-seen');
+        Route::post('reports/mark_unseen', 'ReportController@markUnSeen')->name('reports.mark-unseen');
     });
 
 
@@ -99,6 +104,12 @@ Route::middleware(['auth','verify'])->group(function (){
     /*END FRIEND ROUTES*/
 
     /*END EDUCATION ROUTE*/
+
+    /*REPORT ROUTE*/
+    Route::post('report/store', 'ReportController@store')->name('report.store');
+
+
+    /*END REPORT ROUTE*/
     /*COMPANY ROUTE*/
     Route::get('/company/{company}', 'CompanyController@show');
     Route::post('/employer/add_employer', 'EmployeeController@store');

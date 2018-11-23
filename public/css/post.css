@@ -1,9 +1,18 @@
 .user-posts .single-post {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   position: relative;
   padding: 10px;
   width: 100%;
   border-radius: 3px;
   background-color: #F3E9E1; }
+  .user-posts .single-post a {
+    transition: 200ms;
+    color: #055e60 !important; }
+    .user-posts .single-post a:hover {
+      text-decoration: none !important;
+      opacity: 0.9; }
   .user-posts .single-post .header {
     margin-bottom: 10px;
     align-items: center; }
@@ -204,5 +213,16 @@
     height: 50px;
     width: 50px;
     object-fit: cover; }
+
+.report {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  padding: 10px;
+  background-color: #055e60;
+  border-radius: 100%; }
+  .report a {
+    font-size: 16px !important;
+    color: #ff4558 !important; }
 
 /*# sourceMappingURL=post.css.map */

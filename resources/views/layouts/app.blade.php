@@ -117,6 +117,7 @@
         </div>
             @include('user.education_create')
             @include('user.post-create-modal')
+            @include('layouts.report_modal')
             @include('company.employee-create-modal')
                     <div id="edit_education_modal" style="display: none">
                     </div>
@@ -167,6 +168,8 @@
 
 <script type="text/javascript" src="{{asset('js/bootstrap-tagsinput.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/admin.js')}}"></script>
+
 <script type="text/javascript" src="{{asset('js/company.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/education.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/friends.js')}}"></script>

@@ -29,7 +29,7 @@ class HomeController extends Controller
     {
         if(Auth::check()){
             $page = Input::get('page', 1); // Get the ?page=1 from the url
-            $perPage = 15; // Number of items per page
+            $perPage = 14; // Number of items per page
             $offset = ($page * $perPage) - $perPage;
             $posts = Auth::user()->getFriendsPosts();
 

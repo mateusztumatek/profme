@@ -274,7 +274,9 @@
             </div>
 
                 @endforeach
-
+            <div class="col-sm-12 justify-content-center">
+                {{$posts->links()}}
+            </div>
         </div>
 
     </div>

@@ -18,6 +18,7 @@ body{
 
 }
 
+
 .container{
 
 
@@ -1111,7 +1112,14 @@ td{
 }
 
 .friends{
-
+  a{
+    transition: all 200ms;
+    color: $primary-color !important;
+    &:hover{
+      text-decoration: none;
+      opacity: 0.9;
+    }
+  }
   .friend{
     align-items: center;
     padding: 5px 0px 5px 0px;
@@ -1180,4 +1188,15 @@ td{
 
 .color_orange{
   color:  $secondary-color !important;
+}
+
+.action{
+  a, button{
+    color: $third-color !important;
+    border-color: $third-color !important;
+     &:hover{
+       color: white !important;
+       border-color: white !important;
+     }
+  }
 }
