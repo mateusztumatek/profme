@@ -1,0 +1,56 @@
+/*
+Error: Invalid CSS after "": expected selector, was "{"
+        on line 1 of timeline.css.map
+
+1: {
+2: "version": 3,
+3: "mappings": "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",
+4: "sources": ["timeline.scss"],
+5: "names": [],
+6: "file": "timeline.css"
+
+Backtrace:
+timeline.css.map:1
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:1278:in `expected'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:1208:in `expected'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:1188:in `expr!'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/scss/static_parser.rb:20:in `parse_selector'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:438:in `visit_rule'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/stack.rb:79:in `block in with_base'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/stack.rb:135:in `with_frame'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/stack.rb:79:in `with_base'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:162:in `visit'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/tree/visitors/base.rb:52:in `map'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:161:in `visit'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:10:in `visit'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/tree/root_node.rb:36:in `css_tree'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/engine.rb:307:in `render_with_sourcemap'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:209:in `each'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/plugin.rb:82:in `update_stylesheets'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/exec/sass_scss.rb:340:in `watch_or_update'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/exec/sass_scss.rb:51:in `process_result'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/exec/base.rb:52:in `parse'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/exec/base.rb:19:in `parse!'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/bin/scss:13:in `<top (required)>'
+C:/Ruby24-x64/bin/scss:23:in `load'
+C:/Ruby24-x64/bin/scss:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"\": expected selector, was \"{\"\A         on line 1 of timeline.css.map\A \A 1: {\A 2: \"version\": 3,\A 3: \"mappings\": \"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\",\A 4: \"sources\": [\"timeline.scss\"],\A 5: \"names\": [],\A 6: \"file\": \"timeline.css\""; }
