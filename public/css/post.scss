@@ -6,7 +6,7 @@ $primary-color: #055e60;
   .single-post{
     a{
       transition: 200ms;
-      color: $primary-color !important;
+      color: $primary-color ;
       &:hover{
         text-decoration: none !important;
         opacity: 0.9;
@@ -315,11 +315,11 @@ $primary-color: #055e60;
   position: absolute;
   bottom: 0px;
   right: 0px;
-  padding: 10px;
+  padding: 3px;
   background-color: $primary-color;
-  border-radius: 100%;
+
   a{
     font-size: 16px !important;
-    color: #ff4558 !important;
+    color: white !important;
   }
 }

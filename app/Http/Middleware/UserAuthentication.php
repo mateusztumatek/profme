@@ -2,7 +2,11 @@
 
 namespace App\Http\Middleware;
 
+use App\Company;
+use App\Image;
+use App\User;
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class UserAuthentication
 {
@@ -15,8 +19,19 @@ class UserAuthentication
      */
     public function handle($request, Closure $next)
     {
-        if(1 == 1){
-            return'tak';
+        foreach ($request->route()->parameters as $parameter){
+            if ($parameter instanceof User){
+                $id = $parameter->id;
+            }
+            if ($parameter instanceof Image){
+                $id = $parameter->user_id;
+            }
+            if ($parameter instanceof Company){
+                $id = $parameter->user_id;
+            }
+        }
+        if(Auth::id() != $id){
+            return redirect()->route('home');
         }
         return $next($request);
     }

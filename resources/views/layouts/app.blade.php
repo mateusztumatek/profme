@@ -25,6 +25,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/errors.css') }}" rel="stylesheet">
     <link href="{{ asset('css/post.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/compare.css') }}" rel="stylesheet">
+
     <link href="{{ asset('css/user.css') }}" rel="stylesheet">
     <link href="{{asset('css/loader.css')}}" rel="stylesheet">
     <link href="{{asset('css/circle.css')}}" rel="stylesheet">
@@ -136,18 +138,7 @@
 
     </div>
 
-    <div class="modal fade" id="photos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
 
-
-            <img id = "modal-photo" src="{{url('img/klub1.jpg')}}">
-
-
-
-        </div>
-        <button id="modal-button" id="modal-button" type="button" class="btn btn-secondary" data-dismiss="modal">X</button>
-
-    </div>
 
 
 

@@ -665,7 +665,15 @@ position: relative;
 th, td{
   border: none !important;
 }
-
+.reports{
+  tr:nth-child(odd){
+    color: black;
+    background-color: transparent;
+    span{
+      color: black;
+    }
+  }
+}
 tbody tr:nth-child(odd){
   background-color: $primary-color;
   color: #fff;
@@ -1199,4 +1207,53 @@ td{
        border-color: white !important;
      }
   }
+}
+
+.user-image{
+  &:hover a{
+    top: 40%;
+  }
+  &:hover img{
+    opacity: 0.5;
+  }
+  background-color: black;
+  position: relative;
+  margin: auto;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border: 1px solid rgba(35,163,166,0.99);
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 6px 1px rgba(255,255,255,0.52);
+  -moz-box-shadow: 0px 0px 6px 1px rgba(255,255,255,0.52);
+  box-shadow: 0px 0px 6px 1px rgba(255,255,255,0.52);
+  img{
+
+    object-fit: cover;
+    width: 155px;
+    height: 155px;
+
+  }
+  a{
+
+    position: absolute;
+    top: 150%;
+    left: 25%;
+
+
+  }
+
+
+}
+
+.w-15{
+  width: 15%;
+}
+.w-85{
+  width: 85%;
+}
+
+.alert{
+  padding: 1px !important;
+  margin: 0px ;
 }

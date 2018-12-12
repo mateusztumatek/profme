@@ -43,4 +43,8 @@ class Image extends Model
 
 
     }
+
+    public function getPath(){
+        return public_path('/users/'. $this->user_id. '/'. $this->path);
+    }
 }

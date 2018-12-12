@@ -1,0 +1,32 @@
+.compare-header {
+  padding: 10px; }
+  .compare-header p {
+    margin: 0px !important; }
+  .compare-header a {
+    text-decoration: none !important; }
+  .compare-header .user-image {
+    margin: inherit !important; }
+
+.compare-content {
+  margin-top: 10px;
+  padding: 10px; }
+
+.timeline-panel {
+  width: 46%;
+  float: left;
+  padding: 1.5em;
+  border-radius: 2px;
+  position: relative;
+  -webkit-box-shadow: 0px 6px 15px -2px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 6px 15px -2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 6px 15px -2px rgba(0, 0, 0, 0.4); }
+
+.rate-circle {
+  border: 4px solid #0c5460;
+  padding: 20px; }
+  .rate-circle span {
+    line-height: 1;
+    font-weight: bold;
+    font-size: 2rem; }
+
+/*# sourceMappingURL=compare.css.map */

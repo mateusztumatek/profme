@@ -149,22 +149,6 @@ $(function () {
         ajaxStop: function() { $(".loader").remove();
         }
     });
-    $('.employee-confirm-form').on('submit', function (event) {
-        event.preventDefault();
-        var my_form = new FormData(this);
-        var form = this;
-        $.ajax({
-            method: 'POST',
-            url: $(this).attr('action'),
-            data: my_form,
-            processData: false,
-            contentType: false,
-
-        }).done(function (msg) {
-            $('#employee-panel').replaceWith(msg);
-        })
-
-    });
     $('#searchbox_users').keypress(function () {
        ExtendAutocomplete();
     });
@@ -417,8 +401,7 @@ function openReportModal(elem_type, elem_id, elem_name, user_id) {
 }
 
 function showOtherReports(elem) {
-    $.get('other_reports/'+ $(elem).attr('data-report_id'), function (data) {
-        console.log(data);
+    $.get(base_url + '/other_reports/'+ $(elem).attr('data-report_id'), function (data) {
         $('#other_reports').replaceWith(data);
         $('#other_reports').modal();
     });

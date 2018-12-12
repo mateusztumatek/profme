@@ -1,0 +1,310 @@
+Studia ekonomiczne w jêzyku obcym
+Studia informatyczne w jêzyku obcym
+Studia medyczne w jêzyku obcym
+Studia na kierunkach œcis³ych w jêzyku obcym
+Studia na kierunku Administracja
+Studia na kierunku Agroturystyka
+Studia na kierunku Aktorstwo
+Studia na kierunku Akustyka
+Studia na kierunku Akwakultura i bezpieczeñstwo ¿ywnoœci
+Studia na kierunku Amerykanistyka
+Studia na kierunku Analityka gospodarcza
+Studia na kierunku Analityka medyczna
+Studia na kierunku Analityka ¿ywnoœci
+Studia na kierunku Analiza i zarz¹dzanie w biznesie
+Studia na kierunku Andragogika
+Studia na kierunku Animacja kultury
+Studia na kierunku Antropologia mniejszoœci narodowych
+Studia na kierunku Archeologia
+Studia na kierunku Architektura
+Studia na kierunku Architektura i urbanistyka
+Studia na kierunku Architektura krajobrazu
+Studia na kierunku Architektura wnêtrz
+Studia na kierunku Archiwistyka i zarz¹dzanie dokumentacj¹
+Studia na kierunku Artystyczna grafika komputerowa
+Studia na kierunku Astrofizyka i kosmologia
+Studia na kierunku Astronomia
+Studia na kierunku Audiofonologia
+Studia na kierunku Automatyka i robotyka
+Studia na kierunku Bezpieczeñstwo i higiena pracy
+Studia na kierunku Bezpieczeñstwo narodowe
+Studia na kierunku Bezpieczeñstwo wewnêtrzne
+Studia na kierunku Bezpieczeñstwo ¿ywnoœci
+Studia na kierunku Biochemia
+Studia na kierunku Biofizyka
+Studia na kierunku Bioinformatyka
+Studia na kierunku Bioin¿ynieria
+Studia na kierunku Bioin¿ynieria produkcji ¿ywnoœci
+Studia na kierunku Bioin¿ynieria w produkcji zwierzêcej
+Studia na kierunku Bioin¿ynieria ¿ywnoœci i œrodowiska wodnego
+Studia na kierunku Biologia
+Studia na kierunku Biotechnologia
+Studia na kierunku Biotechnologia medyczna
+Studia na kierunku Budownictwo
+Studia na kierunku Ceramika
+Studia na kierunku Chemia
+Studia na kierunku Chemia budowlana
+Studia na kierunku Coaching
+Studia na kierunku Dietetyka
+Studia na kierunku Doradztwo filozoficzne i coaching
+Studia na kierunku Doradztwo i coaching
+Studia na kierunku Dyplomacja europejska
+Studia na kierunku Dyplomacja i stosunki konsularne
+Studia na kierunku Dyrygentura
+Studia na kierunku Dziennikarstwo i komunikacja spo³eczna
+Studia na kierunku Edukacja artystyczna w zakresie sztuki muzycznej
+Studia na kierunku Edukacja artystyczna w zakresie sztuki plastycznej
+Studia na kierunku Edukacja techniczno-informatyczna
+Studia na kierunku Edytorstwo
+Studia na kierunku Ekoenergetyka
+Studia na kierunku Ekonometria
+Studia na kierunku Ekonomia
+Studia na kierunku Eksploatacja mórz i oceanów
+Studia na kierunku Elektronika
+Studia na kierunku Elektronika i telekomunikacja
+Studia na kierunku Elektroradiologia
+Studia na kierunku Elektrotechnika
+Studia na kierunku Energetyka
+Studia na kierunku Energetyka i chemia j¹drowa
+Studia na kierunku Etnologia
+Studia na kierunku Etyka
+Studia na kierunku Europeistyka
+Studia na kierunku Farmacja
+Studia na kierunku Farmerstwo
+Studia na kierunku Film i sztuki audiowizualne
+Studia na kierunku Filmoznawstwo
+Studia na kierunku Filologia
+Studia na kierunku Filologia angielska (anglistyka)
+Studia na kierunku Filologia arabska (arabistyka)
+Studia na kierunku Filologia ba³kañska
+Studia na kierunku Filologia ba³tycka
+Studia na kierunku Filologia bia³oruska (bia³orutenistyka)
+Studia na kierunku Filologia chiñska (sinologia)
+Studia na kierunku Filologia chorwacka
+Studia na kierunku Filologia czeska
+Studia na kierunku Filologia duñska
+Studia na kierunku Filologia fiñska
+Studia na kierunku Filologia francuska
+Studia na kierunku Filologia germañska (niemiecka)
+Studia na kierunku Filologia grecka (hellenistyka)
+Studia na kierunku Filologia hebrajska
+Studia na kierunku Filologia hiszpañska (hispanistyka)
+Studia na kierunku Filologia iberyjska (iberystyka)
+Studia na kierunku Filologia indyjska
+Studia na kierunku Filologia japoñska (japonistyka)
+Studia na kierunku Filologia klasyczna
+Studia na kierunku Filologia niderlandzka
+Studia na kierunku Filologia norweska
+Studia na kierunku Filologia orientalna (orientalistyka)
+Studia na kierunku Filologia polska (polonistyka)
+Studia na kierunku Filologia portugalska
+Studia na kierunku Filologia romañska
+Studia na kierunku Filologia rosyjska
+Studia na kierunku Filologia serbska i chorwacka
+Studia na kierunku Filologia skandynawska
+Studia na kierunku Filologia s³owacka
+Studia na kierunku Filologia s³owiañska (slawistyka)
+Studia na kierunku Filologia szwedzka
+Studia na kierunku Filologia ukraiñska
+Studia na kierunku Filologia wêgierska
+Studia na kierunku Filologia w³oska (italianistyka)
+Studia na kierunku Filozofia
+Studia na kierunku Finanse i inwestycje
+Studia na kierunku Finanse i rachunkowoœæ
+Studia na kierunku Fizjoterapia
+Studia na kierunku Fizyka
+Studia na kierunku Fizyka medyczna
+Studia na kierunku Fizyka techniczna
+Studia na kierunku Fotografia
+Studia na kierunku Gastronomia i hotelarstwo
+Studia na kierunku Geodezja i kartografia
+Studia na kierunku Geofizyka
+Studia na kierunku Geografia
+Studia na kierunku Geoinformacja
+Studia na kierunku Geologia
+Studia na kierunku Geomonitoring
+Studia na kierunku Górnictwo i geologia
+Studia na kierunku Gospodarka i zarz¹dzanie publiczne
+Studia na kierunku Gospodarka odpadami i rekultywacja terenów zdegradowanych
+Studia na kierunku Gospodarka przestrzenna
+Studia na kierunku Gospodarka turystyczna
+Studia na kierunku Grafika
+Studia na kierunku Grafika warsztatowa
+Studia na kierunku Gry i grafika interaktywna
+Studia na kierunku Higiena dentystyczna
+Studia na kierunku Historia
+Studia na kierunku Historia sztuki
+Studia na kierunku Indologia
+Studia na kierunku Informacja naukowa i bibliotekoznawstwo
+Studia na kierunku Informatyka
+Studia na kierunku Informatyka i ekonometria
+Studia na kierunku Informatyka in¿ynierska
+Studia na kierunku Informatyka stosowana
+Studia na kierunku Instrumentalistyka
+Studia na kierunku Intermedia
+Studia na kierunku In¿ynieria bezpieczeñstwa
+Studia na kierunku In¿ynieria bezpieczeñstwa pracy
+Studia na kierunku In¿ynieria biomedyczna
+Studia na kierunku In¿ynieria chemiczna i procesowa
+Studia na kierunku In¿ynieria i gospodarka wodna
+Studia na kierunku In¿ynieria internetu
+Studia na kierunku In¿ynieria materia³ów kompozytowych
+Studia na kierunku In¿ynieria materia³owa
+Studia na kierunku In¿ynieria nanostruktur
+Studia na kierunku In¿ynieria odnawialnych Ÿróde³ energii
+Studia na kierunku In¿ynieria produkcji
+Studia na kierunku In¿ynieria œrodowiska
+Studia na kierunku In¿ynieria systemów biotechnicznych
+Studia na kierunku Jachting
+Studia na kierunku Jazz i muzyka estradowa
+Studia na kierunku Judaistyka
+Studia na kierunku Kierunek lekarski
+Studia na kierunku Kierunek lekarsko-dentystyczny
+Studia na kierunku Kognitywistyka
+Studia na kierunku Kompozycja i teoria muzyki
+Studia na kierunku Konserwacja i restauracja dzie³ sztuki
+Studia na kierunku Koreanistyka
+Studia na kierunku Kosmetologia
+Studia na kierunku Krajoznawstwo i turystyka historyczna
+Studia na kierunku Kryminologia
+Studia na kierunku Kultura œródziemnomorska
+Studia na kierunku Kulturoznawstwo
+Studia na kierunku Leœnictwo
+Studia na kierunku Lingwistyka stosowana
+Studia na kierunku Logistyka
+Studia na kierunku Logopedia ogólna i kliniczna
+Studia na kierunku Logopedia z audiologi¹
+Studia na kierunku Lotnictwo
+Studia na kierunku Lotnictwo i kosmonautyka
+Studia na kierunku Malarstwo
+Studia na kierunku Marketing
+Studia na kierunku Matematyka
+Studia na kierunku Matematyka stosowana
+Studia na kierunku Materia³y wspó³czesnych technologii
+Studia na kierunku Mechanika i budowa maszyn
+Studia na kierunku Mechatronika
+Studia na kierunku Media i komunikacja spo³eczna
+Studia na kierunku Medycyna roœlin
+Studia na kierunku Metalurgia
+Studia na kierunku Miêdzynarodowe stosunki gospodarcze
+Studia na kierunku Miêdzywydzia³owe indywidualne studia humanistyczne
+Studia na kierunku Miêdzywydzia³owe indywidualne studia matematyczno-przyrodnicze
+Studia na kierunku Mikrobiologia
+Studia na kierunku Mikrobiologia stosowana
+Studia na kierunku Monta¿ filmowy
+Studia na kierunku Musical
+Studia na kierunku Muzeologia
+Studia na kierunku Muzyka sakralna (koœcielna)
+Studia na kierunku Muzykologia
+Studia na kierunku Muzykoterapia
+Studia na kierunku Nanotechnologia
+Studia na kierunku Nanotechnologie i nanomateria³y
+Studia na kierunku Nauki o rodzinie
+Studia na kierunku Nawigacja
+Studia na kierunku Naziemne zarz¹dzanie lotnictwem Aviation Management
+Studia na kierunku Neurobiologia
+Studia na kierunku Neuroinformatyka
+Studia na kierunku Obronnoœæ
+Studia na kierunku Oceanografia
+Studia na kierunku Oceanotechnika
+Studia na kierunku Ochrona dóbr kultury
+Studia na kierunku Ochrona roœlin i kontrola fitosanitarna
+Studia na kierunku Ochrona œrodowiska
+Studia na kierunku Odnawialne Ÿród³a energii i gospodarka odpadami
+Studia na kierunku Ogrodnictwo
+Studia na kierunku Okcydentalistyka
+Studia na Kierunku operatorskim - obraz multimedialny
+Studia na kierunku Optometria
+Studia na kierunku Optyka
+Studia na kierunku Organizacja produkcji filmowej i telewizyjnej
+Studia na kierunku Papiernictwo i poligrafia
+Studia na kierunku Pedagogika
+Studia na kierunku Pedagogika specjalna
+Studia na kierunku Pielêgniarstwo
+Studia na kierunku Politologia
+Studia na kierunku Polityka publiczna
+Studia na kierunku Polityka spo³eczna
+Studia na kierunku Po³o¿nictwo
+Studia na kierunku Praca socjalna
+Studia na kierunku Prawo
+Studia na kierunku prawo gospodarcze i podatkowe
+Studia na kierunku Prawo kanoniczne
+Studia na kierunku Projektowanie aktywnoœci spo³ecznej
+Studia na kierunku Projektowanie graficzne
+Studia na kierunku Przedsiêbiorczoœæ w internecie
+Studia na kierunku Przyroda
+Studia na kierunku Psychologia
+Studia na kierunku Psychologia w zarz¹dzaniu
+Studia na kierunku Rachunkowoœæ
+Studia na kierunku Ratownictwo medyczne
+Studia na kierunku Realizacja obrazu filmowego, telewizyjnego i fotografia
+Studia na kierunku Recykling materia³ów
+Studia na kierunku Religioznawstwo
+Studia na kierunku Rewitalizacja dróg wodnych
+Studia na kierunku Re¿yseria
+Studia na kierunku Re¿yseria dŸwiêku
+Studia na kierunku Re¿yseria i produkcja gier wideo
+Studia na kierunku Rolnictwo
+Studia na kierunku Rybactwo
+Studia na kierunku Rytmika
+Studia na kierunku RzeŸba
+Studia na kierunku Scenografia
+Studia na kierunku Scenopisarstwo
+Studia na kierunku Socjologia
+Studia na kierunku Socjologia stosowana
+Studia na kierunku Socjologia techniki i ekologii
+Studia na kierunku Sport
+Studia na kierunku Stosowana psychologia zwierz¹t
+Studia na kierunku Stosunki miêdzynarodowe
+Studia na kierunku Studia azjatyckie
+Studia na kierunku Studia ba³tyckie
+Studia na kierunku Studia œródziemnomorskie
+Studia na kierunku Studia wschodnioeuropejskie
+Studia na kierunku Sztuka mediów
+Studia na kierunku Sztuka rejestracji obrazu
+Studia na kierunku Taniec
+Studia na kierunku Techniczne zastosowania internetu
+Studia na kierunku Technika rolnicza i leœna
+Studia na kierunku Techniki dentystyczne
+Studia na kierunku Technologia chemiczna
+Studia na kierunku Technologia drewna
+Studia na kierunku Technologia ¿ywnoœci i ¿ywienia cz³owieka
+Studia na kierunku Technologie energii odnawialnej
+Studia na kierunku Technologie i systemy bezpieczeñstwa
+Studia na kierunku Technologie informatyczne w logistyce
+Studia na kierunku Technologie ochrony œrodowiska
+Studia na kierunku Teleinformatyka
+Studia na kierunku Telekomunikacja
+Studia na kierunku Teologia
+Studia na kierunku Terapia zajêciowa
+Studia na kierunku Tkanina i ubiór
+Studia na kierunku Towaroznawstwo
+Studia na kierunku Transport
+Studia na kierunku Turystyka i rekreacja
+Studia na kierunku Weterynaria
+Studia na kierunku Wiedza o teatrze
+Studia na kierunku Wirtotechnologia
+Studia na kierunku W³ókiennictwo
+Studia na kierunku Wojskoznawstwo
+Studia na kierunku Wokalistyka
+Studia na kierunku Wschodoznawstwo
+Studia na kierunku Wychowanie fizyczne
+Studia na kierunku Wzornictwo
+Studia na kierunku Zaawansowane materia³y i nanotechnologia
+Studia na kierunku Zarz¹dzanie
+Studia na kierunku Zarz¹dzanie i in¿ynieria produkcji
+Studia na kierunku Zarz¹dzanie informacj¹
+Studia na kierunku Zarz¹dzanie in¿ynierskie
+Studia na kierunku Zarz¹dzanie publiczne
+Studia na kierunku Zarz¹dzanie œrodowiskiem
+Studia na kierunku Zarz¹dzanie technik¹
+Studia na kierunku Zarz¹dzanie wiedz¹ i infobrokeringiem
+Studia na kierunku Zastosowania fizyki w biologii i medycynie
+Studia na kierunku Zdrowie publiczne
+Studia na kierunku Zdrowie œrodowiskowe
+Studia na kierunku Zootechnika
+Studia na pokrewnych kierunkach
+Studia prawnicze w jêzyku obcym
+Studia spo³eczne w jêzyku obcym
+Studia techniczne w jêzyku obcym
+Studia artystyczne

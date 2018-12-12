@@ -5,6 +5,7 @@
         <div class="row justify-content-between">
 
             @foreach($posts as $post)
+
             <div id="post-{{$post->id}}" class="col-md-6 pr-4 pl-4  mt-3">
 
                 <div class="single-post mt-2">
@@ -113,7 +114,7 @@
                             <hr>
                             <h3 class="text-left"> Komentarze: </h3>
                             <div class="comment-content">
-                                    @if(!$post->Comments()->isEmpty() && $post->user_id == \Illuminate\Support\Facades\Auth::id())
+                                    @if(!$post->Comments()->isEmpty())
 
 
 
@@ -269,6 +270,11 @@
                         </div>
                     </div>
                         @endif
+                    @if(!\App\Report::checkIfReported('post', $post->id, \Illuminate\Support\Facades\Auth::id()))
+                        <div class="report">
+                            <a class="my_tooltip" onclick="openReportModal('post', '{{$post->id}}', '{{$post->title}}', '{{\Illuminate\Support\Facades\Auth::id()}}' )"> <i class="fa fa-warning"></i></a>
+                        </div>
+                    @endif
                 </div>
 
             </div>

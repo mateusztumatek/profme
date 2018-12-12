@@ -131,9 +131,18 @@ class UserController extends Controller
         return back();
     }
     public  function show( User $user){
-        $posts = Post::where('user_id', $user->id)->paginate(15);
-        $employees = Employee::where('user_id', $user->id)->orderBy('since', 'desc')->get();
-        $educations = Education::where('user_id', $user->id)->get();
+
+        if(\Illuminate\Support\Facades\Auth::id() == $user->id || \Illuminate\Support\Facades\Auth::user()->hasRole('admin')){
+            $posts = Post::where('user_id', $user->id)->paginate(15);
+            $employees = Employee::where('user_id', $user->id)->orderBy('since', 'desc')->get();
+            $educations = Education::where('user_id', $user->id)->get();
+        } else {
+            $posts = Post::where('user_id', $user->id)->where('acitive', 1)->paginate(15);
+            $employees = Employee::where('user_id', $user->id)->orderBy('since', 'desc')->where('active', 1)->get();
+            $educations = Education::where('user_id', $user->id)->where('active', 1)->get();
+
+        }
+
         return view('user.user', compact('user', 'employees', 'educations', 'posts'));
     }
 

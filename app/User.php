@@ -83,7 +83,7 @@ class User extends Authenticatable
     }
 
     public function getPosts($count = 200){
-        return Post::where('user_id', $this->id)->take($count)->get();
+        return Post::where('user_id', $this->id)->where('status','<>', 'reported')->take($count)->get();
     }
 
     public function getCompany(){
@@ -118,5 +118,13 @@ class User extends Authenticatable
             }
         }
         return $to_return;
+    }
+
+    public function getUserPositions(){
+        return Employee::where('active', 1)->where('user_id', $this->id)->get();
+    }
+
+    public function getEducations(){
+        return Education::where('user_id', $this->id)->get();
     }
 }
