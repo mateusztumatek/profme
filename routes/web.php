@@ -51,6 +51,7 @@ Route::middleware(['auth','verify'])->group(function (){
         Route::get('admin_dashboard/company/{term}', 'AdminController@showCompany')->name('admin.show_company');
         Route::post('admin_dashboard/company/edit/{company}', 'AdminController@editCompany');
         /* END COMPANY TABLE */
+        /*REPORTS TABLE*/
         Route::post('report/accept', 'ReportController@accept')->name('reports.accept');
         Route::post('report/unaccept', 'ReportController@unaccept')->name('reports.unaccept');
 
@@ -59,7 +60,9 @@ Route::middleware(['auth','verify'])->group(function (){
         Route::post('reports/mark_seen', 'ReportController@markSeen')->name('reports.mark-seen');
         Route::post('reports/mark_unseen', 'ReportController@markUnSeen')->name('reports.mark-unseen');
         Route::post('reports/all_mark_seen', 'ReportController@AllMarkSeen')->name('reports.all-mark-seen');
-
+        /*END REPORTS TABLE*/
+        /*COMPANY TABLE*/
+        Route::get('admin/education/{education}', 'AdminController@getEducation');
     });
 
 
@@ -101,6 +104,7 @@ Route::middleware(['auth','verify'])->group(function (){
     Route::post('/education/update/{education}', 'EducationController@update')->name('education.update');
     Route::get('/education/edit/{education}', 'EducationController@edit')->name('education.edit');
 
+    /*END EDUCATION ROUTE*/
 
     /*FRIEND ROUTES */
     Route::get('/friends', 'FriendController@index')->name('friends.index');
@@ -113,7 +117,6 @@ Route::middleware(['auth','verify'])->group(function (){
 
     /*END FRIEND ROUTES*/
 
-    /*END EDUCATION ROUTE*/
 
     /*REPORT ROUTE*/
     Route::post('report/store', 'ReportController@store')->name('report.store');

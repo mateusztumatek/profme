@@ -10,7 +10,7 @@
                 <li class="tab-label"><a href="#tabs-4">Oceny</a></li>
                 <li class="tab-label"><a href="#tabs-5">Edukacje</a></li>
 
-                <li onclick="search_url = base_url + '/autocomplete/reports'" class="tab-label"><a href="#tabs-4">Zgłoszenia</a></li>
+                <li onclick="search_url = base_url + '/autocomplete/reports'" class="tab-label"><a href="#tabs-6">Zgłoszenia</a></li>
                 <li class="tab-label float-right">
 
                     <input placeholder="wyszukaj użytkownika" style="padding: 0.200rem 0.3rem" class="form-control search-form mr-5" data-type="users" type="text" id="searchbox_users" >
@@ -115,13 +115,58 @@
 
                     </div>
                 </div>
+            <div class="tab" id="tabs-5">
+                <div class="tab-content">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Użytkownik</th>
+                            <th scope="col">kierunek </th>
+                            <th scope="col">Instytucja</th>
+                            <th scope="col">Opis</th>
+                            <th scope="col">Od</th>
+                            <th scope="col">Do</th>
+                            <th scope="col">aktywne</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-        <!-- Koniec tabeli firmy -->
-        <div class="tab" id="tabs-4">
-            <div class="tab-content">
-                @include('admin.reports_index')
+                         @foreach($educations as $education)
+                            <tr>
+                                <th scope="row">{{$education->id}}</th>
+                                <td><a href="{{url('user/'.$education->getUser()->id)}}">{{$education->getUser()->name}}</a></td>
+                                <td>{{$education->getDirection()->name}}</td>
+                                <td>{{$education->institution}}</td>
+                                <td>{{$education->description}}</td>
+                                <td>{{$education->since}}</td>
+                                <td>{{$education->untill}}</td>
+                                <td>@if($education->active == 1) <span> <i class="fa fa-check"></i></span> @else <span> <i class="fa fa-times"></i></span> @endif</td>
+                                <td><button type="button" class="open_education_modal btn btn-primary" data-id="{{$education->id}}"><span class="fa fa-key"></span></button></td>
+
+                                <td>
+                                        <form onsubmit="submitForm(this,event)" method="POST" action="{{route('education.delete', ['education' => $education])}}">
+                                            @CSRF
+                                        <button type="submit" class="delete_education btn btn-primary" data-id = "{{$education->id}}"><span class="fa fa-trash"></span></button>
+                                        </form>
+                                </td>
+
+
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    <span>{{$educations->links()}}</span>
+                </div>
+
             </div>
-        </div>
+            <!-- Koniec tabeli firmy -->
+            <div class="tab" id="tabs-6">
+                <div class="tab-content">
+                    @include('admin.reports_index')
+                </div>
+            </div>
+
         </div>
 
     </div>

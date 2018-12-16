@@ -66,7 +66,12 @@
                             <img style="max-width: 50px; max-height: 50px; display: none" id="education_image_placeholder" >
 
                         </div>
-
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" for="active">Aktywne</label>
+                            <div class="col-10">
+                                <input class="form-control" type="checkbox" id="active" name="active" @if($education->active == 1) checked @endif >
+                            </div>
+                        </div>
 
                     <div style="display: none;" class="warning" id="form_errors"></div>
                 </div>

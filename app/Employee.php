@@ -62,4 +62,8 @@ class Employee extends Model
         $rate = $rate / $count;
         return $rate;
     }
+    public function delete(){
+        Report::where('elem_id', $this->id)->where('elem_type', 'employee')->delete();
+        parent::delete();
+    }
 }

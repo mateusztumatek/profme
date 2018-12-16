@@ -9,6 +9,7 @@ use App\Rate;
 use App\Report;
 use App\Roles;
 use App\User;
+use App\Education;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Input;
@@ -19,9 +20,10 @@ class AdminController extends Controller
 {
     public function index(Request $request){
         $reports = Report::getReports();
+        $educations = Education::paginate(10);
         $users = User::paginate(10);
         $companies = Company::paginate(10);
-        return view('admin.index', compact('users','companies', 'reports'));
+        return view('admin.index', compact('users','companies', 'reports', 'educations'));
     }
 
     public function userPermission(User $user){
@@ -124,5 +126,9 @@ class AdminController extends Controller
         $company->save();
 
         return back()->with(['message' => 'firma '. $company->official_name .' została poprawnie edytowana' ]);
+    }
+
+    public function getEducation(Education $education){
+        return  view('user.education_edit', compact('education'))->render();
     }
 }

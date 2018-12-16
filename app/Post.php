@@ -31,7 +31,10 @@ class Post extends Model
     public function Tags(){
         return DB::table('tags')->where('type', 'post')->where('elem_id', $this->id)->get();
     }
-
+    public function delete(){
+        Report::where('elem_id', $this->id)->where('elem_type', 'post')->delete();
+        parent::delete();
+    }
     public function Comments(){
         return Comment::where('post_id', $this->id)->orderBy('created_at', 'desc')->get();
     }

@@ -55,6 +55,7 @@ class EducationController extends Controller
     }
 
     public function update(Request $request, Education $education){
+
         $user = User::findOrFail($education->user_id);
         $request->validate([
             'institution' => 'required',
@@ -79,9 +80,17 @@ class EducationController extends Controller
         $education->description = $request->description;
         $education->since = $request->since;
         $education->untill = $request->untill;
+            if($request->active == 'on'){
+                $education->active = 1;
+            }else {
+                $education->active = 0;
+            }
+
 
         $education->update();
         $educations = Education::where('user_id', $user->id)->get();
+
         return view('user.education_index', compact('user', 'educations'));
+
     }
 }

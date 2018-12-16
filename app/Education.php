@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\User;
 
 class Education extends Model
 {
@@ -25,5 +26,13 @@ class Education extends Model
 
         public function getDirection(){
             return DB::table('study_directions')->where('id', $this->direction_id)->first();
+        }
+
+        public function getUser(){
+            return User::findOrFail($this->user_id);
+        }
+        public function delete(){
+            Report::where('elem_id', $this->id)->where('elem_type', 'education')->delete();
+            parent::delete();
         }
 }

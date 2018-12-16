@@ -127,7 +127,12 @@ function submitForm(form, event) {
             }
 
         }).done(function (msg, errors) {
-
+            var pathArray = window.location.pathname.split('/');
+            for (i = 0; i < pathArray.length; i++) {
+                if(pathArray[i] == 'admin_dashboard'){
+                    location.reload();
+                }
+            }
             $('#education_content').replaceWith(msg);
 
         });

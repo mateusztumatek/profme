@@ -2,6 +2,20 @@ var reports = new Array();
 var csrf_token;
 $(function () {
     csrf_token = $("meta[name='csrf-token']").attr("content");
+    $('.open_education_modal').click(function (event) {
+
+        education_id = $(this).data('id');
+        $.get(base_url+'/admin/education/'+education_id, function (data) {
+            if($('#edit_education_modal').length){
+                $('#edit_education_modal').replaceWith(data);
+            } else {
+                $("body").append(data);
+            }
+            $('#edit_education_modal').modal();
+
+        });
+    });
+
 });
 function sendRequest(form, e) {
     e.preventDefault();
