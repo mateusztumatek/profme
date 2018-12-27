@@ -465,7 +465,8 @@ body {
 .tag {
   background-color: #055e60 !important;
   padding: 2px;
-  border-radius: 2px; }
+  border-radius: 2px;
+  color: white; }
 
 th, td {
   border: none !important; }

@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Notifications\VerifyEmail;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -25,7 +26,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'date_of_birth', 'city', 'sex', 'last_activity', 'phone','active','verify'
+        'name', 'email', 'password', 'date_of_birth', 'city', 'sex', 'last_activity', 'phone','active','verify', 'banned_at', 'banned_to'
     ];
     protected $date = ['deleted_at'];
     /**
@@ -126,5 +127,83 @@ class User extends Authenticatable
 
     public function getEducations(){
         return Education::where('user_id', $this->id)->get();
+    }
+
+    public function isbanned(){
+        return ($this->banned_to > Carbon::today() && $this->banned_to != null)? true : false;
+    }
+
+    public function getRates(){
+        $all_rates = Rate::all();
+        $to_return = [];
+        foreach ($all_rates as $rate){
+            if($rate->getElement()->getUser() instanceof User){
+                if($rate->getElement()->getUser() == Auth::user()){
+                    array_push($to_return, $rate);
+                }
+            }
+        }
+        return $to_return;
+    }
+
+    public function getPrivileges(){
+        if($this->sex == 'male'){
+            $privileges = Privilege::where('active', 1)->where('sex', '!=', 'female')->get();
+        } else{
+            $privileges = Privilege::where('active', 1)->where('sex', '!=', 'male')->get();
+        }
+        $array =  [];
+        foreach ($privileges as $privilege){
+            $test = true;
+            $settings = $privilege->getSettings();
+            foreach ($settings as $setting){
+                switch (key($setting)){
+                    case 'rate':
+                        if(Rate::getRate($this) < $setting[key($setting)]){
+                            $test = false;
+                        }
+                        break;
+                    case 'count':
+                        if (count($this->getRates()) < $setting[key($setting)]){
+                            $test = false;
+                        }
+                        break;
+                    case 'diligence_count':
+                        if(Rate::getUserEmployeeRateCount($this, 'diligence') < $setting[key($setting)]){
+                            $test = false;
+                        }
+                        break;
+                    case 'diligence':
+                        if(Rate::getUserEmployeeRate($this, 'diligence') < $setting[key($setting)]){
+                            $test = false;
+                        }
+                        break;
+                    case 'knowledge_count':
+                        if(Rate::getUserEmployeeRateCount($this, 'knowledge') < $setting[key($setting)]){
+                            $test = false;
+                        }
+                        break;
+                    case 'knowledge':
+                        if(Rate::getUserEmployeeRate($this, 'knowledge') < $setting[key($setting)]){
+                            $test = false;
+                        }
+                        break;
+                    case 'punctuality_count':
+                        if(Rate::getUserEmployeeRateCount($this, 'punctuality') < $setting[key($setting)]){
+                            $test = false;
+                        }
+                        break;
+                    case 'punctuality':
+                        if(Rate::getUserEmployeeRate($this, 'punctuality') < $setting[key($setting)]){
+                            $test = false;
+                        }
+                        break;
+                }
+            }
+            if($test){
+                array_push($array, $privilege);
+            }
+        }
+        return $array;
     }
 }

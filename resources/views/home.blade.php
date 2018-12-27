@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     <div class="col-sm-12 user-posts">
 
         <div class="row justify-content-between">

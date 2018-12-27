@@ -19,10 +19,10 @@ class post_permission
     public function handle($request, Closure $next)
     {
         $post = Post::find($request->route()->parameter('post'));
-        if(Auth::id() != $post->user_id){
-            return redirect('/home');
+        if(Auth::id() == $post->user_id || Auth::user()->hasRole('admin')){
+            return $next($request);
         }
+        return redirect('/home');
 
-        return $next($request);
     }
 }

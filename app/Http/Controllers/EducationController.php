@@ -14,7 +14,7 @@ class EducationController extends Controller
 
         $request->validate([
             'institution' => 'required',
-            'since' => 'required',
+            'since' => 'required|date|before:today',
             'image' => 'required',
         ]);
 
@@ -59,7 +59,7 @@ class EducationController extends Controller
         $user = User::findOrFail($education->user_id);
         $request->validate([
             'institution' => 'required',
-            'since' => 'required',
+            'since' => 'required|date|before:today',
         ]);
 
         if($request->hasFile('image')){

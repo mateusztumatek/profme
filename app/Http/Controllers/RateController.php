@@ -5,13 +5,20 @@ namespace App\Http\Controllers;
 use App\Rate;
 use App\User;
 use Carbon\Carbon;
+use foo\bar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RateController extends Controller
 {
     public function __construct()
     {
 
+    }
+    public function index(User $user){
+        $rates = $user->getRates();
+        $rates = collect($rates)->sortByDesc('created_at');
+        return view('user.rate_index', compact('rates', 'user'));
     }
 
     public function store(Request $request){
@@ -46,5 +53,13 @@ class RateController extends Controller
 
         return $users;
 
+    }
+
+    public function destroy(Rate $rate){
+        if($rate->user_id != Auth::id()){
+            return back()->with(['message' => 'nie masz uprawnień']);
+        }
+        $rate->delete();
+        return back()->with(['message' => 'ocena usunięta pomyślnie']);
     }
 }

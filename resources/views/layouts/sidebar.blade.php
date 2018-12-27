@@ -13,8 +13,8 @@
 
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical" >
         <ul style="padding: 0px;">
-            <li><a style="border-top: 1px solid rgba(255,255,255,0.3);" class="nav-link "  href="#v-pills-home">Oceny</a></li>
-            <li><a class="nav-link" id="v-pills-profile-tab" data-toggle="pill"  href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Przwileje</a></li>
+            <li><a style="border-top: 1px solid rgba(255,255,255,0.3);" class="nav-link "  href="{{url('rates/'.\Illuminate\Support\Facades\Auth::id())}}">Oceny</a></li>
+            <li><a class="nav-link" href="{{url('privileges/'.\Illuminate\Support\Facades\Auth::id())}}" >Przywileje</a></li>
             <li   class="dropdown" >
                 <a  id="settings" href="#" class=" nav-link" >Ustawienia</a>
                 <ul   id = "settings_menu" class="dropdown-menu">

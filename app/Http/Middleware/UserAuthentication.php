@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Company;
 use App\Image;
+use App\Rate;
 use App\User;
 use Closure;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +28,9 @@ class UserAuthentication
                 $id = $parameter->user_id;
             }
             if ($parameter instanceof Company){
+                $id = $parameter->user_id;
+            }
+            if ($parameter instanceof Rate){
                 $id = $parameter->user_id;
             }
         }

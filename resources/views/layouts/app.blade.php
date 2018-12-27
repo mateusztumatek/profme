@@ -26,6 +26,7 @@
     <link href="{{ asset('css/errors.css') }}" rel="stylesheet">
     <link href="{{ asset('css/post.css') }}" rel="stylesheet">
     <link href="{{ asset('css/compare.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/privilege.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/user.css') }}" rel="stylesheet">
     <link href="{{asset('css/loader.css')}}" rel="stylesheet">

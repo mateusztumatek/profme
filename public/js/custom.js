@@ -201,7 +201,7 @@ $(function () {
          user_id = button.data('whatever');
         $('#change_permission_form').attr('action', 'user/'+ user_id + '/change_permission');
         $('#delete_user_form').attr('action', 'user/delete/' + user_id);
-       console.log('otworzylem modal z uprawnieniami uzytkownika');
+        $('#ban_user_form').attr('action', 'ban_user/' + user_id);
         $(':input[value=admin]').attr("checked", false);
         $(':input[value=moderator]').attr("checked", false);
         $(':input[value=user]').attr("checked", false);
@@ -381,4 +381,13 @@ function showOtherReports(elem) {
         $('#other_reports').replaceWith(data);
         $('#other_reports').modal();
     });
+}
+
+function confirm_form(form, msg, e) {
+    var r = confirm(msg);
+    if(r == true){
+
+    }else {
+        e.preventDefault();
+    }
 }

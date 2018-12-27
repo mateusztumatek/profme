@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Company;
+use App\Employee;
+use App\Friend;
+use App\Image;
 use App\Post;
+use App\Privilege;
 use App\Rate;
 use App\Report;
 use App\Roles;
 use App\User;
 use App\Education;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Input;
@@ -20,10 +25,13 @@ class AdminController extends Controller
 {
     public function index(Request $request){
         $reports = Report::getReports();
+        $privileges = Privilege::paginate(10);
         $educations = Education::paginate(10);
         $users = User::paginate(10);
+        $posts = Post::paginate(10);
         $companies = Company::paginate(10);
-        return view('admin.index', compact('users','companies', 'reports', 'educations'));
+        $rates = Rate::paginate(10);
+        return view('admin.index', compact('users','companies', 'reports', 'educations', 'posts', 'rates', 'privileges'));
     }
 
     public function userPermission(User $user){
@@ -41,6 +49,7 @@ class AdminController extends Controller
 
         if($request['permission']){
             foreach ($request['permission'] as $permission){
+                if(!($user->hasRole('admin') && $permission == 'admin'))
                 Roles::create([
                     'user_id' => $user->id,
                     'name' => $permission,
@@ -52,13 +61,22 @@ class AdminController extends Controller
 
     public function deleteUser(User $user){
         /*  Usuwanie wszystkich komentarzy, firm uzytkownikow, ocen ktorych dokonali rol i ich postów*/
+        if($user->hasRole('admin')){
+            return back()->with(['message' => 'nie można usunąć administratora']);
+        }
         $user_name = $user->name;
         Comment::where('user_id', $user->id)->delete();
         Company::where('user_id', $user->id)->delete();
         Rate::where('user_id', $user->id)->delete();
+        Employee::where('user_id', $user->id)->delete();
         Roles::where('user_id', $user->id)->delete();
         Post::where('user_id', $user->id)->delete();
+        Education::where('user_id', $user->id)->delete();
+        Report::where('user_id', $user->id)->delete();
+        Friend::where('user_1', $user_id)->where('user_2', $user->id)->delete();
+        Image::where('user_id', $user->id)->delete();
         User::findOrFail($user->id)->delete();
+
         return back()->with(['message' => 'użytkownik ' . $user_name . ' został usunięty.']);
 
     }
@@ -130,5 +148,27 @@ class AdminController extends Controller
 
     public function getEducation(Education $education){
         return  view('user.education_edit', compact('education'))->render();
+    }
+
+    public function getComments(Post $post){
+        return view('admin.comments_modal', compact('post'))->render();
+    }
+
+    public function banUser(Request $request, User $user){
+        $request->validate([
+            'banned_to' => 'required|date'
+        ]);
+        if($user->hasRole('admin')){
+            return back()->with(['message' => 'nie możesz zbanować administratora']);
+        }
+        $user->banned_at = Carbon::now();
+        $user->banned_to = $request->banned_to;
+        $user->update();
+        if($request->banned_to < Carbon::today()){
+            $message = 'użytkownik został odbanowany';
+        } else{
+            $message = 'użytkownik został zbanowany';
+        }
+        return back()->with(['message' => $message]);
     }
 }

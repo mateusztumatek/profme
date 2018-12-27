@@ -25,7 +25,14 @@ class Rate extends Model
             $this->weight = 3;
         }
     }
-
+    public function getUser(){
+        if($this->elem_type == 'post'){
+            return User::findOrFail($this->user_id);
+        }else
+        {
+            return Company::findOrFail($this->company_id);
+        }
+    }
     public function getElement(){
         if($this->elem_type == 'post'){
             return Post::findOrFail($this->elem_id);
@@ -61,9 +68,24 @@ class Rate extends Model
 
         return $user_rate;
     }
+    static function getUserEmployeeRateCount(User $user, $type){
+        $rates = Rate::where('elem_type', $type)->get();
+        foreach ($rates as $key=>$rate){
+            if($rate->getElement()->user_id != $user->id){
+                $rates->forget($key);
+            }
+        }
+        return count($rates);
+    }
 
     static function getUserEmployeeRate(User $user, $type){
-        $rates = Rate::where('user_id', $user->id)->where('elem_type', $type)->get();
+        $rates = Rate::where('elem_type', $type)->get();
+        foreach ($rates as $key=>$rate){
+            if($rate->getElement()->user_id != $user->id){
+                $rates->forget($key);
+            }
+        }
+
         $all = 0;
         foreach ($rates as $rate){
             $all = $rate->rate+$all;
@@ -78,5 +100,7 @@ class Rate extends Model
     static function getCountUserRates($user){
         return count(Rate::where('user_id', $user->id)->get());
     }
+
+
 
 }

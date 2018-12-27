@@ -17,7 +17,7 @@ class RedirectIfNotVerified
     public function handle($request, Closure $next)
     {
 
-        if(Auth::user()->verify != null){
+        if(Auth::user()->verify != null || Auth::user()->isBanned()){
             return redirect('/verify');
         }
         return $next($request);

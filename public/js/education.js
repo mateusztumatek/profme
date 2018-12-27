@@ -35,36 +35,32 @@ $(function () {
 
 
 
-    $( "input[name='image']" ).change(function () {
 
+    $( "input[name='image']" ).change(function () {
+        console.log(this);
         if (this.files && this.files[0]) {
             var reader = new FileReader();
-
+            var button = this;
             reader.onload = function(e) {
-                console.log($('#education_photo'));
-                $('#education_photo').attr('src', e.target.result);
-                $('#education_photo').show();
+                var attr = $(button).attr('data-target');
+                console.log(attr);
+
+                if(typeof attr !== typeof undefined && attr !== false ){
+                    console.log($(attr));
+                    $(attr).attr('src', e.target.result);
+                    $(attr).show();
+
+                } else {
+                    $('#education_photo').attr('src', e.target.result);
+                    $('#education_photo').show();
+
+                }
             }
 
             reader.readAsDataURL(this.files[0]);
         }
     });
 
-
-    $( "input[name='image']" ).change(function () {
-
-        if (this.files && this.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                console.log($('#education_photo'));
-                $('#education_photo').attr('src', e.target.result);
-                $('#education_photo').show();
-            }
-
-            reader.readAsDataURL(this.files[0]);
-        }
-    })
 
 });
 

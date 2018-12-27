@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
 Route::middleware(['auth','verify'])->group(function (){
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index');
 
     /* USERS ROUTE */
     Route::middleware(['user-auth'])->group(function (){
@@ -28,9 +28,11 @@ Route::middleware(['auth','verify'])->group(function (){
         Route::post('/settings/change_active/{image}', 'UserController@changeActiveImage')->name('change_Active_Image.user');
         Route::post('/user/create/company/edit/{company}', 'UserController@company_edit')->name('user.company.edit');
         Route::post('/settings/delete_image/{image}', 'UserController@deleteImage')->name('delete_image.user');
+
+
     });
     Route::get('/user/{user}', 'UserController@show')->name('user.show');
-
+    Route::get('/rates/{user}', 'RateController@index');
     Route::get('/user/create/company/create', 'UserController@company_create')->name('user.company.create');
 
 
@@ -44,8 +46,15 @@ Route::middleware(['auth','verify'])->group(function (){
         Route::post('/user/{user}/change_permission', 'AdminController@userChangePermission')->name('admin.change_permission');
         Route::post('/user/delete/{user}', 'AdminController@deleteUser')->name('admin.delete_user');
         Route::get('/admin_dashboard/user/{term}', 'AdminController@showUser')->name('admin.show_user');
+        Route::post('/ban_user/{user}', 'AdminController@banUser')->name('ban.user');
         /*END USER TABLE */
-
+        /*PRIVILAGE ROUTE*/
+        Route::get('/privilege_create', 'PrivilegeController@index');
+        Route::get('/privilege_edit/{privilege}', 'PrivilegeController@edit');
+        Route::post('/privilege_store', 'PrivilegeController@store')->name('privilege.store');
+        Route::post('/privilege_update/{privilege}', 'PrivilegeController@update')->name('privilege.update');
+        Route::post('/privilege_delete/{privilege}', 'PrivilegeController@destroy')->name('privilege.delete');
+        /*END PRIVILAGE ROUTE*/
         /* COMPANY TABLE */
         Route::get('admin_dashboard/get/company/{company}', 'AdminController@getCompany');
         Route::get('admin_dashboard/company/{term}', 'AdminController@showCompany')->name('admin.show_company');
@@ -63,6 +72,7 @@ Route::middleware(['auth','verify'])->group(function (){
         /*END REPORTS TABLE*/
         /*COMPANY TABLE*/
         Route::get('admin/education/{education}', 'AdminController@getEducation');
+        Route::get('admin/post/comments/{post}', 'AdminController@getComments');
     });
 
 
@@ -70,9 +80,7 @@ Route::middleware(['auth','verify'])->group(function (){
 
 
     /* POST ROUTES */
-    Route::group(['middleware' => 'user-auth'], function (){
 
-    });
     Route::get('/post/create', 'PostController@create')->name('post.create');
     Route::post('/post/store', 'PostController@store')->name('post.store');
     Route::get('/post/edit/{post}', 'PostController@edit')->name('post_edit')->middleware('post_permission');
@@ -80,7 +88,10 @@ Route::middleware(['auth','verify'])->group(function (){
     Route::post('/post/destroy/{post}', 'PostController@destroy')->name('post_destroy')->middleware('post_permission');
 
 
+    /* PRIVILEGE ROUTES*/
+    Route::get('/privileges/{user}', 'PrivilegeController@show');
 
+    /*END PREVILEGE ROUTES*/
 
     /* COMMENTS */
     Route::post('comment/store', 'CommentController@store')->name('comment.store');
@@ -90,9 +101,12 @@ Route::middleware(['auth','verify'])->group(function (){
     /*END COMMENTS */
 
     /* RATE */
-    Route::post('rate/store', 'RateController@store')->name('rate.store');
-    Route::post('rate/update/{rate}', 'RateController@update')->name('rate.update');
+
     Route::get('users_rate/{post}/{rate}', 'RateController@users_rate')->name('users_rate')->middleware('post_permission');
+    Route::post('rate/store', 'RateController@store')->name('rate.store');
+    Route::post('rate/delete/{rate}', 'RateController@destroy')->name('rate.delete');
+    Route::post('rate/update/{rate}', 'RateController@update')->name('rate.update');
+
 
 
     /*END RATE*/

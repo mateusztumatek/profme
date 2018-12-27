@@ -11,6 +11,8 @@
                 <li class="tab-label"><a href="#tabs-5">Edukacje</a></li>
 
                 <li onclick="search_url = base_url + '/autocomplete/reports'" class="tab-label"><a href="#tabs-6">Zgłoszenia</a></li>
+                <li class="tab-label"><a href="#tabs-7">Przywileje</a></li>
+
                 <li class="tab-label float-right">
 
                     <input placeholder="wyszukaj użytkownika" style="padding: 0.200rem 0.3rem" class="form-control search-form mr-5" data-type="users" type="text" id="searchbox_users" >
@@ -31,6 +33,7 @@
                                <th scope="col">Miasto</th>
                                <th scope="col">Numer Tefelonu</th>
                                <th scope="col">średnia ocena</th>
+                               <th scope="col">status</th>
                                <th scope="col">akcje</th>
                            </tr>
                            </thead>
@@ -51,6 +54,13 @@
                                    {{round(\App\Rate::getRate($user), 2)}}
                                    @endif
                                </td>
+                               <td style="width: 6%;">
+                                   @if($user->isbanned())
+                                   zbanowany do: {{$user->banned_to}}
+                                       @else
+                                   aktywny
+                                   @endif
+                               </td>
                                <td><button type="button" data-toggle="modal" data-target="#user_permission" class="btn btn-primary" data-whatever="{{$user->id}}"><span class="fa fa-key"></span></button></td>
                            </tr>
                             @endforeach
@@ -61,7 +71,50 @@
                 </div>
             </div>
             <!-- Koniec tabeli Użytkownicy -->
+            <div class="tab" id="tabs-2">
+                <div class="tab-content">
 
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Użytkownik</th>
+                            <th scope="col">Tytuł</th>
+                            <th scope="col">Opis</th>
+                            <th scope="col">Zdjęcie</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Komentarze</th>
+                            <th scope="col">akcje</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        @foreach($posts as $post)
+                            <tr>
+                                <th scope="row">{{$post->id}}</th>
+                                <td><a href="{{url('user/'.$post->getUser()->id)}}">{{$post->getUser()->name}}</a></td>
+                                <td style="width: 30%">{{$post->title}}</td>
+                                <td style="width: 35%">{{$post->description}}</td>
+                                <td><img onclick="loadGallery(this)" style="max-height: 40px; max-width: 40px" src="{{$post->getImageUrl()}}"></td>
+                                <td>{{$post->status}}</td>
+                                <td @if(count($post->comments()) > 0)onclick="open_comments_modal(this)" data-id="{{$post->id}}" style="cursor: pointer" @endif>{{count($post->comments())}}</td>
+                                <td>
+                                    <form method="POST" action="{{route('post_destroy', ['post' => $post])}}">
+                                        @CSRF
+                                      <button type="submit" class="btn btn-primary" ><span class="fa fa-trash"></span></button>
+
+                                     </form>
+
+                                </td>
+                                <td><a href="{{url('post/edit/'. $post->id)}}" class="btn btn-primary"><span class="fa fa-key"></span></a></td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    <span>{{$posts->links()}}</span>
+
+                </div>
+            </div>
             <!-- tabela firmy -->
                 <div class="tab" id="tabs-3">
                     <div class="tab-content">
@@ -115,6 +168,51 @@
 
                     </div>
                 </div>
+            <div class="tab" id="tabs-4">
+                <div class="tab-content">
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Użytkownik oceniający</th>
+                            <th scope="col">Element</th>
+                            <th scope="col">Typ elementu</th>
+                            <th scope="col">ocena</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        @foreach($rates as $rate)
+                            <tr>
+                                <th scope="row">{{$rate->id}}</th>
+                                <td style="width: 20%"><a href="@if($rate->getUser() instanceof \App\User) {{url('user/'.$rate->getUser()->id)}} @else {{url('company/'. $rate->getUser()->id)}}@endif">@if($rate->getUser() instanceof \App\User) użytkownik: {{$rate->getUser()->name}} @else firma: {{$rate->getUser()->official_name}}@endif</a></td>
+                                <td style="width: 15%">
+                                    @if($rate->getElement() instanceof \App\Post)
+                                    <a href="{{url('user/'. $rate->getElement()->user_id)}}">{{$rate->getElement()->title}}</a>
+                                        @else
+                                    <a href="{{url('user/'. $rate->getElement()->user_id)}}"> {{$rate->getElement()->getUser()->name}}</a>
+                                    @endif
+                                </td>
+
+                                <td scope="row">{{$rate->elem_type}}</td>
+                                <td>{{$rate->rate}}</td>
+                                <td>
+                                    <form method="POST" action="{{route('rate.delete', ['rate' => $rate])}}">
+                                        @CSRF
+                                        <button type="submit" class="btn btn-primary" ><span class="fa fa-trash"></span></button>
+
+                                    </form>
+
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    <span>{{$rates->links()}}</span>
+
+                </div>
+            </div>
             <div class="tab" id="tabs-5">
                 <div class="tab-content">
                     <table class="table">
@@ -166,8 +264,60 @@
                     @include('admin.reports_index')
                 </div>
             </div>
+            <div class="tab" id="tabs-7">
+                <div class="tab-content">
+                    <button onclick="getPrivilageCreateModal()" type="button" class="btn my-button"> Dodaj Przywilej </button>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">użytkownik</th>
+                            <th scope="col">Nazwa</th>
+                            <th scope="col">ikona</th>
+                            <th scope="col">ustawienia</th>
+                            <th scope="col">płeć</th>
+                            <th scope="col">grupa</th>
+                            <th scope="col">aktywne</th>
+                            <th scope="col">Opis</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-        </div>
+                        @foreach($privileges as $privilege)
+                            <tr>
+                                <th scope="row">{{$privilege->id}}</th>
+                                <td><a href="{{url('user/'.$privilege->getUser()->id)}}">{{$privilege->getUser()->name}}</a></td>
+                                <td>{{$privilege->name}}</td>
+                                <td><img src="{{$privilege->getIcon()}}" style="max-width: 70px; max-height: 70px"></td>
+                                <td>
+                                    @foreach($privilege->getSettings() as $key => $setting)
+                                        {{key($setting). ' => '. $setting[key($setting)]}}
+                                        <br>
+                                        @endforeach
+
+                                </td>
+                                <td>{{$privilege->sex}}</td>
+                                <td>{{$privilege->group}}</td>
+                                <td>{{$privilege->active}}</td>
+                                <td>{{substr($privilege->description, 0, 10)}}...</td>
+                                <td><button type="button" data-privilege_id="{{$privilege->id}}" class="btn btn-primary" onclick="getPrivilegeEditModal(this)"><span class="fa fa-key"></span></button></td>
+                                <td>
+                                    <form onsubmit="confirm_form(this, 'czy na pewno chcesz usunąć ten element?', event)" action="{{route('privilege.delete', ['privilege' => $privilege])}}" method="POST">
+                                        @CSRF
+                                        <button type="submit" class="btn btn-primary"><span class="fa fa-trash"></span></button>
+                                    </form>
+                                </td>
+
+
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    <span>{{$privileges->links()}}</span>
+
+                </div>
+            </div>
+
 
     </div>
 
@@ -290,13 +440,32 @@
                             </label>
                         </div>
                     </div>
+
+
                     </form>
+                    <hr class="mt-2 mb-2">
                     <form id="delete_user_form" method="POST">
                         @CSRF
 
                         <button type="submit" class="btn btn-primary">usuń użytkownika </button>
                     </form>
+                    <form id="ban_user_form" method="POST">
+                        @CSRF
+                        <div class="col-sm-10 col-md-5 mb-2 mt-2">
+                            <div class="form-inline">
+                                <input class="form-control" type="date" name="banned_to" required>
+                                <label class="form-check-label ml-2" for="defaultCheck1">
+                                    zbanuj użytkownika
+                                </label>
+                            </div>
+                        </div>
+                        <button type="button" onclick="$('#ban_user_form').submit()" class="btn btn-primary">zatwierdz status</button>
+                    </form>
                 </div>
+
+
+
+
 
 
                 <div class="modal-footer">
