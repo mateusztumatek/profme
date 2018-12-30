@@ -206,4 +206,18 @@ class User extends Authenticatable
         }
         return $array;
     }
+    public function getFriendsRates(){
+        $array = [];
+        $rates = Rate::orderBy('created_at', 'desc')->get();
+        foreach ($rates as $rate){
+            $user = User::find($rate->getElement()->user_id);
+            if(Friend::isFriends(Auth::user(), $user)){
+                array_push($array, $rate);
+            }
+            if(count($array) == 6){
+                break;
+            }
+        }
+        return $array;
+    }
 }

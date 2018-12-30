@@ -6,6 +6,11 @@
 
         </div>
         <div class="col-12-sm row">
+            @if(empty($privileges))
+                <div class="col-sm-12 text-center mt-3">
+                    <p class="text-center"><strong>Nie masz żadnych przywilejów</strong></p>
+                </div>
+                @else
             @foreach($privileges as $privilege)
                 <div onclick="ShowOrHide($(this).children('.card-footer'))" class="col-sm-6 card-privilege">
                     <div class="img-background">
@@ -84,6 +89,7 @@
                     </div>
                 </div>
                 @endforeach
+                @endif
         </div>
 
     @endsection

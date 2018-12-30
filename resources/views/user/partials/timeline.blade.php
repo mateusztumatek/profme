@@ -12,7 +12,7 @@
                         <div class="timeline-panel">
                             <div class="timeline-heading">
                                 <div class="row justify-content-between align-items-center m-0">
-                                    <h4 class="timeline-title">{{$employee->getCompany()->official_name}}</h4>
+                                    <a href="{{url('/company/'.$employee->getCompany()->id)}}" style="font-weight: 500; font-size: 1.3rem; text-decoration: none" class="timeline-title">{{$employee->getCompany()->official_name}}</a>
                                     @if($employee->active)
                                     <div class="job-check">zatwierdzone</div>
                                         @endif

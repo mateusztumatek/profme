@@ -21,16 +21,14 @@
 
                     <li><a  class="nav-link" href="{{route('edit.user', ['user' => \Illuminate\Support\Facades\Auth::user()])}}">Ustawienia Konta</a></li>
                     <li><a  class="nav-link" href="#post-create" data-toggle="modal">Dodaj Post</a></li>
-                    <li><a  class="nav-link"href="#">Something else here</a></li>
-                    <li><a  class="nav-link" href="#">One more separated link</a></li>
                 </ul>
             </li>
            @if(!empty(\Illuminate\Support\Facades\Auth::user()->getCompany()))
                <li class="dropdown">
                    @if(count($unConfirmEmployees = \Illuminate\Support\Facades\Auth::user()->getUnconfirmEmployees()) != 0)
-                       <a  onclick="ShowOrHide($('#companies_menu'))" href="#" class=" nav-link color_orange" >Twoje Firmy {{count(\Illuminate\Support\Facades\Auth::user()->getUnconfirmEmployees())}}</a>
+                       <a href="#" id="companies" class=" nav-link color_orange" >Twoje Firmy {{count(\Illuminate\Support\Facades\Auth::user()->getUnconfirmEmployees())}}</a>
                    @else
-                       <a  onclick="ShowOrHide($('#companies_menu'))" href="#" class=" nav-link" >Twoje Firmy</a>
+                       <a href="#" id="companies" class=" nav-link" >Twoje Firmy</a>
 
                    @endif
 
@@ -59,44 +57,20 @@
             </h4>
         </div>
         <div class="last-events-content">
+            @foreach(\Illuminate\Support\Facades\Auth::user()->getFriendsRates() as $rate)
             <div class="row item " style="margin: 0px;">
                 <div class="col-md-8">
                     <h4>
-                        Adam Warchol
+                        {{$rate->getElement()->getUser()->name}}
                     </h4>
-                    <p> Za: <span> #Post </span></p>
+                    <p> Za: <span> #{{$rate->elem_type}} </span></p>
                 </div>
                 <div class="col-md-4">
-                    <div class="my-progress-bar"></div>
+                    <div class="rate-circle" style="padding: 0px; border: 0px;"><span style="font-size: 1.5rem !important;">{{$rate->rate}}</span></div>
 
                 </div>
             </div>
-            <div class="row item " style="margin: 0px;">
-                <img src="{{url('img/foto1.jpg')}}">
-                <div class="col-md-8">
-
-                    <h4>
-                        Angelika Marko
-                    </h4>
-                    <p> Za: <span> #Fotografia </span></p>
-                </div>
-                <div class="col-md-4">
-                    <div class="my-progress-bar"></div>
-
-                </div>
-            </div>
-            <div class="row item " style="margin: 0px;">
-                <div class="col-md-8">
-                    <h4>
-                        Adam Warchol
-                    </h4>
-                    <p> Za: <span> #Post </span></p>
-                </div>
-                <div class="col-md-4">
-                    <div class="my-progress-bar"></div>
-
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 

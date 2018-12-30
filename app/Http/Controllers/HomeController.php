@@ -32,7 +32,6 @@ class HomeController extends Controller
             $perPage = 14; // Number of items per page
             $offset = ($page * $perPage) - $perPage;
             $posts = Auth::user()->getFriendsPosts();
-
             $posts = new LengthAwarePaginator(array_slice($posts, $offset, $perPage, true), count($posts), $perPage, $page,  ['path' => $request->url(), 'query' => $request->query()]);
 
             return view('home', compact('posts'));

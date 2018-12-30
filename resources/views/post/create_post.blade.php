@@ -56,12 +56,7 @@
                 <div  class="row justify-content-center">
 
                     <a onclick="show_form($('#post-create-form'))" class="my-button" style="text-align:center; color: black; padding: 15px 20px 15px 20px; margin: 5px; font-size: 15px; width:200px"><i class="fa fa-pencil-square"></i> Dodaj post</a>
-                    <a class="my-button" style="text-align:center; color: black; padding: 15px 20px 15px 20px; margin: 5px; font-size: 15px; width: 200px"><i class="fa fa-comment"></i> Dodaj aktywność</a>
                     <a class="my-button" style="text-align:center; color: black; padding: 15px 20px 15px 20px; margin: 5px; font-size: 15px; width: 200px"><i class="fa fa-photo"></i> Dodaj zdjęcie</a>
-
-
-
-
 
                 </div>
             </div>

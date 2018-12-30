@@ -137,7 +137,7 @@ class UserController extends Controller
             $employees = Employee::where('user_id', $user->id)->orderBy('since', 'desc')->get();
             $educations = Education::where('user_id', $user->id)->get();
         } else {
-            $posts = Post::where('user_id', $user->id)->where('acitive', 1)->paginate(15);
+            $posts = Post::where('user_id', $user->id)->where('status', 'expectant')->paginate(15);
             $employees = Employee::where('user_id', $user->id)->orderBy('since', 'desc')->where('active', 1)->get();
             $educations = Education::where('user_id', $user->id)->where('active', 1)->get();
 

@@ -18,7 +18,7 @@ class CreateEducationTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('direction_id')->unsigned();
             $table->string('institution');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->boolean('active');
             $table->date('since');
             $table->date('untill')->nullable();

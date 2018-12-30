@@ -133,16 +133,24 @@ $(function () {
         $(".errors").hide('Fade', null, 300)
     }, 10000);
     $("#photo_input").change(function () {
-        console.log('zmien blah');
         read_url(this);
     });
 
     $("#settings").on('click', function (event) {
 
         event.preventDefault();
+        if($('#companies_menu').css('display') != 'none'){
+            ShowOrHide($('#companies_menu'));
+        }
         ShowOrHide($('#settings_menu'));
     });
-
+    $('#companies').on('click', function (event) {
+        event.preventDefault();
+       if($('#settings_menu').css('display') != 'none'){
+           ShowOrHide($('#settings_menu'));
+       }
+       ShowOrHide($('#companies_menu'));
+    });
 
 
 
@@ -194,7 +202,20 @@ $(function () {
         $(this).modal();
     });
 
-
+    $('#main-search').autocomplete({
+        source:function (request, response) {
+            var tab1= $.getJSON(base_url+'/autocomplete/users', request, response);
+            var tab2= $.getJSON(base_url+'/autocomplete/companies', request, response);
+        },
+        select:function (ui, item) {
+        console.log(item);
+        if(item.item.type == 'user'){
+           window.location.href = base_url+'/user/'+item.item.id;
+         }else{
+            window.location.href = base_url+'/company/'+item.item.id;
+        }
+        }
+    });
     $('#user_permission').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
 

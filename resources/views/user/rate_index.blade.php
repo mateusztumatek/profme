@@ -5,11 +5,15 @@
     <div class="page-header">
         <h1 id="timeline" class="text-center">Oceny użytkownika {{$user->name}}</h1>
     </div>
+    @if(!$rates->isEmpty())
     <ul class="timeline">
-        @if(!empty($rates))
-            @foreach($rates as $key=>$rate)
+        @php
+            $count = 0;
+        @endphp
 
-                <li @if($key % 2 == 0)class="timeline-inverted" @endif>
+            @foreach($rates as $rate)
+
+                <li @if($count % 2 == 0)class="timeline-inverted" @endif>
                     <div class="timeline-badge "><i class="glyphicon glyphicon-check"></i></div>
 
                     <div class="timeline-panel">
@@ -48,15 +52,16 @@
                         </div>
                     </div>
                 </li>
-
+            @php($count = $count +1)
             @endforeach
-        @else
-            <div class="text-center">
-                <p>Ten użytkownik nie ma dodanej żadnej oceny</p>
 
-            </div>
-        @endif
     </ul>
+    @else
+        <div class="text-center">
+            <p>Ten użytkownik nie ma dodanej żadnej oceny</p>
+
+        </div>
+    @endif
 </div>
 
     @endsection

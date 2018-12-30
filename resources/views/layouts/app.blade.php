@@ -47,7 +47,7 @@
 
                 @include('layouts.topbar')
 
-                    @include ('user.notifications')
+                    {{--@include ('user.notifications')--}}
                 @endauth
                 <main class="content mb-5">
                     @include('layouts.errors')
@@ -63,7 +63,7 @@
     </div>
 
     @auth
-        <div class="modal fade" id="add_photo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="add_photo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 100000000">
             <div class="modal-dialog" role="document">
                 <form action="{{route('add_photo.user', ['user' => \Illuminate\Support\Facades\Auth::user()])}}" method="POST" enctype="multipart/form-data">
                     @CSRF
@@ -115,8 +115,9 @@
                             <button type="submit" class="btn btn-primary">Dodaj Zdjęcie</button>
                         </div>
                     </div>
+                </form>
+
             </div>
-            </form>
         </div>
             @include('user.education_create')
             @include('user.post-create-modal')

@@ -13,7 +13,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.index')}}"> Panel administratora</a>
                 </li>
-                @endif
+                @elseif(\Illuminate\Support\Facades\Auth::user()->hasRole('moderator'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('admin.index')}}"> Panel Moderatora</a>
+                    </li>
+                    @endif
                 <li class="nav-item active">
                     @if(count($unaccepted_friends = \Illuminate\Support\Facades\Auth::user()->getUnacceptedFriends()) != 0)
                         <a style="color: darkorange" class="nav-link" href="{{route('friends.index')}}">Znajomi({{count($unaccepted_friends)}}) </a>
@@ -23,14 +27,11 @@
                     @endif
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Strona główna</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Statysyki</a>
+                    <a class="nav-link" href="{{url('')}}">Strona główna</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0 ml-3">
-                <input class=" form-control mr-sm-2 search-form" type="search" placeholder="Wyszukaj" aria-label="Search">
+                <input class=" form-control mr-sm-2 search-form" id="main-search" type="search" placeholder="Wyszukaj" aria-label="Search">
                 <button style="padding:5px !important; border-color: rgba(255,255,255,0.3)!important; background-color: transparent !important;" class="hvr-sweep-to-right my-2 my-sm-0 my-button" type="submit"><i class=" fa fa-search"></i> Search</button>
             </form>
             <form method="POST" action="{{route('logout')}}">

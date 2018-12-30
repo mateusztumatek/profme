@@ -4,21 +4,30 @@
     <div class="col-sm-12">
         <div  id="tabs">
             <ul class="tabs-label">
+                @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
                 <li onclick="search_url = base_url+'/autocomplete/users'" class="tab-label"><a href="#tabs-1">Użytkownicy</a></li>
+                @endif
                 <li onclick="search_url = base_url+'/autocomplete/posts'" class="tab-label"><a href="#tabs-2">Posty</a></li>
+                    @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
                 <li onclick="search_url = base_url+'/autocomplete/companies'" class="tab-label"><a href="#tabs-3">Firmy</a></li>
+                    @endif
                 <li class="tab-label"><a href="#tabs-4">Oceny</a></li>
                 <li class="tab-label"><a href="#tabs-5">Edukacje</a></li>
 
                 <li onclick="search_url = base_url + '/autocomplete/reports'" class="tab-label"><a href="#tabs-6">Zgłoszenia</a></li>
+                    @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
                 <li class="tab-label"><a href="#tabs-7">Przywileje</a></li>
+                    @endif
 
                 <li class="tab-label float-right">
 
+{{--
                     <input placeholder="wyszukaj użytkownika" style="padding: 0.200rem 0.3rem" class="form-control search-form mr-5" data-type="users" type="text" id="searchbox_users" >
+--}}
                 </li>
             </ul>
             <!-- tabela Użytkownicy -->
+            @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
             <div class="tab" id="tabs-1">
                 <div class="tab-content">
 
@@ -70,6 +79,7 @@
 
                 </div>
             </div>
+            @endif
             <!-- Koniec tabeli Użytkownicy -->
             <div class="tab" id="tabs-2">
                 <div class="tab-content">
@@ -115,6 +125,7 @@
 
                 </div>
             </div>
+             @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
             <!-- tabela firmy -->
                 <div class="tab" id="tabs-3">
                     <div class="tab-content">
@@ -168,6 +179,7 @@
 
                     </div>
                 </div>
+            @endif
             <div class="tab" id="tabs-4">
                 <div class="tab-content">
 
@@ -264,6 +276,7 @@
                     @include('admin.reports_index')
                 </div>
             </div>
+            @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
             <div class="tab" id="tabs-7">
                 <div class="tab-content">
                     <button onclick="getPrivilageCreateModal()" type="button" class="btn my-button"> Dodaj Przywilej </button>
@@ -317,6 +330,7 @@
 
                 </div>
             </div>
+                @endif
 
 
     </div>
@@ -421,14 +435,6 @@
                             <input class="form-check-input" type="checkbox" value="admin" name="permission[]"  >
                             <label class="form-check-label" for="defaultCheck1">
                                 Admin
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-sm-10 col-md-5">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="user" name="permission[]" >
-                            <label class="form-check-label" for="defaultCheck1">
-                                Użytkownik
                             </label>
                         </div>
                     </div>

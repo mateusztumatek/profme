@@ -33,6 +33,7 @@
                                 <p> {{$education->untill}}</p>
                             </div>
                         </div>
+                        @if(\Illuminate\Support\Facades\Auth::id() == $education->user_id)
                         <form onsubmit="delete_education(this, event)" class="mb-2" method="POST" action="{{route('education.delete', ['education' => $education])}}">
                             @CSRF
                             <button type="submit" class="btn my-button "> usuń element </button>
@@ -41,6 +42,7 @@
                         <form onsubmit="education_edit(this, event)" method="GET" action="{{route('education.edit', ['education' => $education])}}">
                             <button type="submit" class="btn my-button "> edytuj element </button>
                         </form>
+                            @endif
 
 
 

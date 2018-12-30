@@ -5,8 +5,9 @@
         <div  id="tabs">
             <ul class="tabs-label">
                 <li class="tab-label"><a href="#tabs-1">Profil ogólny</a></li>
-                <li class="tab-label"><a href="#tabs-2">Pracownicy</a></li>
                 @if(\Illuminate\Support\Facades\Auth::id() == $company->user_id)
+
+                <li class="tab-label"><a href="#tabs-2">Pracownicy</a></li>
                 <li class="tab-label"><a href="#tabs-3">Edytuj profil firmowy</a></li>
                     <li class="tab-label"><a href="#tabs-4"> Porównaj użytkowników </a></li>
                     @endif
@@ -60,6 +61,8 @@
 
                 </div>
             </div>
+            @if(\Illuminate\Support\Facades\Auth::id() == $company->user_id)
+
             <div class="tab" id="tabs-2">
                 <div class="tab-content">
                     @include('company.employee_panel')
@@ -73,6 +76,7 @@
             <div class="tab" id="tabs-4">
                 @include('company.compare_index')
             </div>
+                @endif
 
         </div>
 
